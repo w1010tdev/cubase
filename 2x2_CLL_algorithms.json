@@ -1,0 +1,51 @@
+{
+  "puzzle": "2x2",
+  "set_name": "CLL",
+  "cases": [
+    {
+      "name": "CLL AS 1",
+      "algorithms": [
+        {
+          "algorithm": "y R U2 R' U' R U' R'",
+          "note": ""
+        },
+        {
+          "algorithm": "y2 L' U' L U' L' U2 L",
+          "note": ""
+        },
+        {
+          "algorithm": "R' U' R U' R' U2 R",
+          "note": ""
+        },
+        {
+          "algorithm": "U2 L' U' L U' L' U2 L",
+          "note": ""
+        },
+        {
+          "algorithm": "R U2 R' F R' F' R U' R U' R'",
+          "note": ""
+        },
+        {
+          "algorithm": "y2 R' U R U' R2 F R F' R U R' U' R",
+          "note": ""
+        },
+        {
+          "algorithm": "L' U' L U' L F' L' F L' U2 L",
+          "note": ""
+        },
+        {
+          "algorithm": "y' R U' R2 U R U B U2 B' R",
+          "note": ""
+        },
+        {
+          "algorithm": "y2 F' L F L' U2 L' U2 L",
+          "note": ""
+        },
+        {
+          "algorithm": "R' U L U' R U L'",
+          "note": ""
+        }
+      ]
+    }
+  ]
+}
