@@ -104,65 +104,89 @@ export class Cube2DUI {
             }
 
             if (isPLL) {
+                const getGroupInfo = (x, z, offset) => {
+                    const isXEdge = Math.abs(Math.abs(x) - offset) < 0.1;
+                    const isZEdge = Math.abs(Math.abs(z) - offset) < 0.1;
+                    if (!isXEdge && !isZEdge) return null; // center piece
+                    
+                    const signX = isXEdge ? (x > 0.1 ? 1 : (x < -0.1 ? -1 : 0)) : 0;
+                    const signZ = isZEdge ? (z > 0.1 ? 1 : (z < -0.1 ? -1 : 0)) : 0;
+                    const isCorner = isXEdge && isZEdge;
+                    
+                    return {
+                        id: `${isCorner ? 'C' : 'E'}_${signX}_${signZ}`,
+                        isCorner: isCorner,
+                        centerX: signX * offset,
+                        centerZ: signZ * offset
+                    };
+                };
+
                 const rotations = [
-                    (x, z) => ({x: x, z: z}),
-                    (x, z) => ({x: -z, z: x}),
-                    (x, z) => ({x: -x, z: -z}),
-                    (x, z) => ({x: z, z: -x})
+                    {name: "0deg", func: (x, z) => ({x: x, z: z})},
+                    {name: "90deg", func: (x, z) => ({x: -z, z: x})},
+                    {name: "180deg", func: (x, z) => ({x: -x, z: -z})},
+                    {name: "270deg", func: (x, z) => ({x: z, z: -x})}
                 ];
                 
                 let bestArrows = null;
                 let minArrowCount = Infinity;
                 let bestIsEven = false;
+                let maxOrthoCount = -1;
                 let maxHorizontalCount = -1;
 
-                rotations.forEach((rotFunc) => {
-                    let currentArrows = [];
-                    let horizontalCount = 0;
+                console.log("--- Smart AUF Evaluation ---");
+
+                rotations.forEach((rot) => {
+                    const uniqueArrows = new Map();
 
                     originalUPieces.forEach(cubie => {
-                        const isEdgeOrCorner = Math.abs(Math.abs(cubie.initialPos.x) - offset) < 0.1 || 
-                                               Math.abs(Math.abs(cubie.initialPos.z) - offset) < 0.1;
-                        if (!isEdgeOrCorner) return;
+                        const srcInfo = getGroupInfo(cubie.initialPos.x, cubie.initialPos.z, offset);
+                        if (!srcInfo) return; // skip centers
 
-                        const rotatedPos = rotFunc(cubie.pos.x, cubie.pos.z);
+                        const rotatedPos = rot.func(cubie.pos.x, cubie.pos.z);
+                        const destInfo = getGroupInfo(rotatedPos.x, rotatedPos.z, offset);
                         
-                        if (Math.abs(cubie.initialPos.x - rotatedPos.x) < 0.1 && 
-                            Math.abs(cubie.initialPos.z - rotatedPos.z) < 0.1) {
-                            return;
+                        if (!destInfo || srcInfo.id === destInfo.id) return;
+
+                        const arrowKey = `${srcInfo.id}->${destInfo.id}`;
+                        if (!uniqueArrows.has(arrowKey)) {
+                            const startX = (srcInfo.centerX + offset + 1) * cellSize + cellSize / 2;
+                            const startY = (srcInfo.centerZ + offset + 1) * cellSize + cellSize / 2;
+                            const endX = (destInfo.centerX + offset + 1) * cellSize + cellSize / 2;
+                            const endY = (destInfo.centerZ + offset + 1) * cellSize + cellSize / 2;
+
+                            uniqueArrows.set(arrowKey, {
+                                startX, startY, endX, endY, 
+                                isCorner: srcInfo.isCorner,
+                                srcId: srcInfo.id,
+                                destId: destInfo.id
+                            });
                         }
-
-                        const startX = (cubie.initialPos.x + offset + 1) * cellSize + cellSize / 2;
-                        const startY = (cubie.initialPos.z + offset + 1) * cellSize + cellSize / 2;
-                        const endX = (rotatedPos.x + offset + 1) * cellSize + cellSize / 2;
-                        const endY = (rotatedPos.z + offset + 1) * cellSize + cellSize / 2;
-
-                        if (Math.abs(startY - endY) < 0.1) {
-                            horizontalCount++;
-                        }
-
-                        const isCorner = Math.abs(Math.abs(cubie.initialPos.x) - offset) < 0.1 && 
-                                         Math.abs(Math.abs(cubie.initialPos.z) - offset) < 0.1;
-
-                        currentArrows.push({startX, startY, endX, endY, isCorner});
                     });
 
-                    // Calculate Parity
+                    const currentArrows = Array.from(uniqueArrows.values());
+                    
+                    let horizontalCount = 0;
+                    let verticalCount = 0;
+                    currentArrows.forEach(a => {
+                        if (Math.abs(a.startY - a.endY) < 0.1) horizontalCount++;
+                        if (Math.abs(a.startX - a.endX) < 0.1) verticalCount++;
+                    });
+
+                    // Calculate Edge Parity (Only edges matter for this heuristic)
                     let cycles = 0;
                     let visited = new Set();
-                    let N = currentArrows.length;
+                    let edgeArrows = currentArrows.filter(a => !a.isCorner);
+                    let N = edgeArrows.length;
                     let graph = new Map();
-                    currentArrows.forEach(a => {
-                        const key = `${a.startX.toFixed(2)},${a.startY.toFixed(2)}`;
-                        const val = `${a.endX.toFixed(2)},${a.endY.toFixed(2)}`;
-                        graph.set(key, val);
+                    edgeArrows.forEach(a => {
+                        graph.set(a.srcId, a.destId);
                     });
 
-                    currentArrows.forEach(a => {
-                        const startKey = `${a.startX.toFixed(2)},${a.startY.toFixed(2)}`;
-                        if (!visited.has(startKey)) {
+                    edgeArrows.forEach(a => {
+                        if (!visited.has(a.srcId)) {
                             cycles++;
-                            let curr = startKey;
+                            let curr = a.srcId;
                             while (curr && !visited.has(curr)) {
                                 visited.add(curr);
                                 curr = graph.get(curr);
@@ -170,6 +194,9 @@ export class Cube2DUI {
                         }
                     });
                     const isEvenPerm = N === 0 ? true : (N - cycles) % 2 === 0;
+                    let orthoCount = horizontalCount + verticalCount;
+
+                    console.log(`[${rot.name}] Arrows: ${N}, EvenPerm: ${isEvenPerm}, Ortho: ${orthoCount}, Horiz: ${horizontalCount}`);
 
                     let shouldReplace = false;
                     if (currentArrows.length < minArrowCount) {
@@ -178,8 +205,12 @@ export class Cube2DUI {
                         if (isEvenPerm && !bestIsEven) {
                             shouldReplace = true;
                         } else if (isEvenPerm === bestIsEven) {
-                            if (horizontalCount > maxHorizontalCount) {
+                            if (orthoCount > maxOrthoCount) {
                                 shouldReplace = true;
+                            } else if (orthoCount === maxOrthoCount) {
+                                if (horizontalCount > maxHorizontalCount) {
+                                    shouldReplace = true;
+                                }
                             }
                         }
                     }
@@ -187,10 +218,13 @@ export class Cube2DUI {
                     if (shouldReplace || bestArrows === null) {
                         minArrowCount = currentArrows.length;
                         bestIsEven = isEvenPerm;
+                        maxOrthoCount = orthoCount;
                         maxHorizontalCount = horizontalCount;
                         bestArrows = currentArrows;
                     }
                 });
+                
+                console.log(`=> Selected AUF: Arrows=${minArrowCount}, EvenPerm=${bestIsEven}, Ortho=${maxOrthoCount}, Horiz=${maxHorizontalCount}`);
 
                 if (bestArrows) {
                     bestArrows.forEach(arrow => {
