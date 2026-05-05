@@ -1,3 +1,29 @@
+"""
+=============================================================================
+Script: scrape_scdb_full.py
+Description: 
+    A robust and comprehensive web scraper for SpeedCubeDB.com. 
+    It fetches algorithm cases, standard algorithms, and high-voted community 
+    alternative algorithms for 3x3, 2x2, 4x4, and 5x5 puzzles.
+    
+    Crucially, it handles deeply nested subcategories (e.g., ZBLL has U/T/L/S, 
+    1LLL has 40+ sub-pages, OLLCP has 50+ sub-pages) by automatically detecting
+    if a category page is empty and spidering its sub-links.
+
+Usage:
+    1. Ensure dependencies are installed: `pip install requests beautifulsoup4 urllib3`
+    2. Run: `python scrape_scdb_full.py`
+    3. The scraped JSON data will be saved to `../data/speedcubedb_full.json`.
+
+Features:
+    - Custom TLSAdapter: Bypasses strict SSL/TLS handshake failures often 
+      encountered when rapidly hitting speedcubedb.com.
+    - Robust Retries: Automatically retries on 500/502/504 errors or timeouts.
+    - Deep Traversal: Automatically traverses pagination or sub-category 
+      folders for massive subsets like ZBLL and 1LLL.
+=============================================================================
+"""
+
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -144,6 +170,6 @@ for puzzle in PUZZLES:
         
         time.sleep(0.5)
 
-with open('D:/work/projects/cubase/speedcubedb_full.json', 'w', encoding='utf-8') as f:
+with open('../data/speedcubedb_full.json', 'w', encoding='utf-8') as f:
     json.dump(all_data, f, indent=2, ensure_ascii=False)
-print("\nDone! Saved to speedcubedb_full.json")
+print("\nDone! Saved to ../data/speedcubedb_full.json")

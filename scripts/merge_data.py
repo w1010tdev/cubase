@@ -1,3 +1,30 @@
+"""
+=============================================================================
+Script: merge_data.py
+Description: 
+    This script merges the intermediate database files `cubingapp_algorithms.json` 
+    and `speedcubedb_full.json` into a single, unified database (`merged_database.json`).
+
+Usage:
+    1. Ensure both `../data/cubingapp_algorithms.json` and 
+       `../data/speedcubedb_full.json` are present.
+    2. Run: `python merge_data.py`
+    3. The output will be generated at `../data/merged_database.json`.
+
+Merge Rules & Logic:
+    1. Cubingapp: 
+       - ONLY retains the `roux` methods (e.g., OH-CMLL, LSE-EO, LSE-EOLR).
+       - EXPLICITLY skips the `CMLL` subset from Cubingapp, ensuring that the 
+         SpeedCubeDB version of CMLL is used as the strict standard.
+    2. SpeedCubeDB:
+       - Retains everything scraped (3x3, 2x2, 4x4, 5x5), including CFOP 
+         (OLL, PLL, ZBLL, VLS, F2L, etc.) and other subsets (including CMLL).
+    3. Deduplication:
+       - If multiple sources provide the identical algorithm string for the 
+         same case, it is recorded only once.
+=============================================================================
+"""
+
 import json
 import os
 
@@ -43,11 +70,17 @@ def add_case(puzzle, category, case_name, algorithms, source, subgroup=""):
         merged[puzzle][category][case_name]['subgroup'] = subgroup
 
 # 1. Process Cubingapp Data (ONLY ROUX)
-# User request: "cubingapp的只提供Roux"
+# Filter strictly: only accept Roux, and forcefully exclude CMLL so it 
+# defaults strictly to SpeedCubeDB's CMLL algorithms.
 if 'roux' in cubingapp_data:
     for s in cubingapp_data['roux']:
         puzzle = s.get('puzzle', '3x3')
         category = s.get('name', 'Unknown')
+        
+        # Skip CMLL to retain SpeedCubeDB's pure CMLL
+        if category == 'CMLL':
+            continue
+            
         cases = s.get('cases', [])
         
         for case in cases:
@@ -56,7 +89,7 @@ if 'roux' in cubingapp_data:
             add_case(puzzle, category, c_name, algs, 'cubingapp')
 
 # 2. Process SpeedCubeDB Data (Everything scraped: 3x3, 2x2, 4x4, 5x5)
-# User request: "其余都是speedcubedb上的" (and SQ1/Pyraminx are excluded as per previous instructions)
+# This includes OLL, PLL, ZBLL, VLS, AdvancedF2L, 1LLL, and CMLL!
 for puzzle, categories in scdb_data.items():
     for category, cases in categories.items():
         for case in cases:

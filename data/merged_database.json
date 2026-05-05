@@ -6,34 +6,6 @@
         "subgroup": "Solved",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R U R' F' R U R' U' R' F R2 U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U R' U' R' F R2 U' R' U' R U R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "r U R' F' R U R' U' R' F R2 U' r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U2 R' U' R U2 L' U R' U' L",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
             "alg": "R U R' F' R U R' U' R' F R2 U' R'",
             "source": "speedcubedb"
           },
@@ -55,34 +27,6 @@
         "name": "O Diagonal",
         "subgroup": "Solved",
         "algorithms": [
-          {
-            "alg": {
-              "algorithm": "F R U' R' U' R U R' F' R U R' U' R' F R F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "F R' F R2 U' R' U' R U R' F' R U R' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U' R2 F R F' R U' B U2 B' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "r2 D' r U' r' D r2 F' r' U r F",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
           {
             "alg": "F R U' R' U' R U R' F' R U R' U' R' F R F'",
             "source": "speedcubedb"
@@ -106,34 +50,6 @@
         "subgroup": "H",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U R U R' U R U' R' U R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U2 R' U' R U R' U' R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "r U' r' U' r U' r' U r U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "r U' r' U' r U r' U r U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
             "alg": "U R U R' U R U' R' U R U2 R'",
             "source": "speedcubedb"
           },
@@ -155,34 +71,6 @@
         "name": "H Rows",
         "subgroup": "H",
         "algorithms": [
-          {
-            "alg": {
-              "algorithm": "F U R U' R' U R U' R' U R U' R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "F R U R' U' R U R' U' R U R' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "F U' R2 D R' U2 R D' R2 U F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "F R U r' U' R U R' U' R U R' M' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
           {
             "alg": "F R U R' U' R U R' U' R U R' U' F'",
             "source": "speedcubedb"
@@ -206,34 +94,6 @@
         "subgroup": "H",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U R U2 R2 F R F' U2 R' F R F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' F2 D R2 U R2 D' F2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' F R U R' U' R U' R' U R U R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U F R U R' U' F' R U R' U' R' F R F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
             "alg": "R' F2 D R2 U R2 D' F2 R",
             "source": "speedcubedb"
           },
@@ -255,34 +115,6 @@
         "name": "H Row",
         "subgroup": "H",
         "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U2 r U' r2 D' r U' r' D r2 U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U R' U R U r' F R' F' r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U R' U R U L' U R' U' L",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R U' R2 D' r U' r' D R2 U R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
           {
             "alg": "U2 r U' r2 D' r U' r' D r2 U r'",
             "source": "speedcubedb"
@@ -306,34 +138,6 @@
         "subgroup": "Pi",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "F R U R' U' R U R' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 F U R U' R' U R U' R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "r' U r2 U' r2 U' r2 U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' U2 R2 U R2 U R2 U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
             "alg": "F R U R' U' R U R' U' F'",
             "source": "speedcubedb"
           },
@@ -347,1444 +151,6 @@
           },
           {
             "alg": "R U2 R2 U' R2 U' R2 U2 R",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "Pi Backslash",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U F R' F' R U2 R U' R' U R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U F U R U' R2 F' R U2 R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U M F R' F' r U2 R U' R' U R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' U2 R U R' U' R U2 R f' U' f",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "Pi X",
-        "subgroup": "Pi",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' R' F R U F U' R U R' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' F2 D R2 U' R2 D' F2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "r' F2 D R2 U' R2 D' F2 r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' F R U' R' U' R U R' U R U' R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "R' F2 D R2 U' R2 D' F2 R",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' R' F R U F U' R U R' U' F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "r' F2 D R2 U' R2 D' F2 r",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' F R U' R' U' R U R' U R U' R' F'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "Pi Forward Slash",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "R U2 R' U' R U R' U2 R' F R F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U2 R' U2 R' F R2 U R' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U2 R' U' R U R' U2 r' F R F' M'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U R' U' R' F R2 U R' U' R U R' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "Pi Columns",
-        "subgroup": "Pi",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' r U' r2 D' r U r' D r2 U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R' F R F' r U' R' U' R U' r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R' F R F' r U' r' U' R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U2 R' U R' D' R U2 R' D R2 U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U' r U' r2 D' r U r' D r2 U r'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 R' F R F' r U' r' U' R U' R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 R' F R F' r U' R' U' R U' r'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 L' U R U' L U' R' U' R U' R'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "Pi Left Bar",
-        "subgroup": "Pi",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' R' U' R' F R F' R U' R' U2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' F' U' F U' R U R' U R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R U R' U R U' B U' B' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' r U R' U R' F R F' R U' R' U R U2 r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U' R' U' R' F R F' R U' R' U2 R",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R' F' U' F U' R U R' U R",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 R U R' U R U' B U' B' R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' r U R' U R' F R F' R U' R' U R U2 r'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "U Forward Slash",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U2 R2 D R' U2 R D' R' U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "r U' r' U' r U' r' U' F' U2 F",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R r D r' U2 r D' r' U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' U2 R U2 F U' R' U R U F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "U Backslash",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "R2 D' R U2 R' D R U2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' F R U R' F R U F U2 F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 L2 D' L U2 L' D L U2 L",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' r' D' r U2 r' D r U2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "U Front Row",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "R' U' R U' R' U2 R2 U R' U R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R2 F U' F U F2 R2 U' R' F R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R U R' U R U2 R2 U' R U' R' U2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U R' U' R U' R' U2 R U' R' U2 R U R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "U Rows",
-        "subgroup": "U",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' F R2 D R' U R D' R2 U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R' U' R F R2 D' R U R' D R2 U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "F U R2 D R' U' R D' R2 F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' F R U' R' U' R U R' F' R U R' U' R' F R F' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U' F R2 D R' U R D' R2 U' F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "F U R2 D R' U' R D' R2 F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' R' U' R F R2 D' R U R' D R2 U' F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R' F R U' R' U' R U R' F' R U R' U' R' F R F' R",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "U X",
-        "subgroup": "U",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U2 r U' r' U r' D' r U' r' D r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "r' U r' D' r U r' D r U' r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R' D R U' R U' R' U R' D' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "F R U' R' U R U R' U R U' R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U2 r U' r' U r' D' r U' r' D r",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "F R U' R' U R U R' U R U' R' F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "r' U r' D' r U r' D r U' r",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' R' D R U' R U' R' U R' D' R",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "U Back Row",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' F R U R' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U F U R U' R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' F' U' F U R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "T Left Bar",
-        "subgroup": "T",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' R U R' U' R' F R F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U L U L' U' L' f U f'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U' R U R' U' R' F R F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' r U R' U' r' F R F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "y' R U R' U' R' F R F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U L U L' U' L' f U f'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "T Right Bar",
-        "subgroup": "T",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U L' U' L U L F' L' F",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U r' F' r U r U' r' F",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' F R U' R' U R U R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U L' U' L U L F' L' F",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U r' F' r U r U' r' F",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' F R U' R' U R U R' F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 R' U' R' D' R U R' D R2",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "T Rows",
-        "subgroup": "T",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "F R' F R2 U' R' U' R U R' F2",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U2 R' U' R U' R2 U2 R U R' U R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U R' U R U2 R2 F' r U' r' F2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' U R U2 R' U' R U2 R' U' R U' R' U R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "R U2 R' U' R U' R2 U2 R U R' U R",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "F R' F R2 U' R' U' R U R' F2",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "r' U r U2 R2 F' r U' r' F2 R2",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' R U R' U R U2 R2 F' r U' r' F2 R",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "T Front Row",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "r' U r U2 R2 F R F' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U R2 F R F' U r U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 r U' r' U' F R' F' R2 U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' U r U2 R2 F R F' r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "T Back Row",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "r' D' r U r' D r U' r U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U R' D R U' R U R' U R' D' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 F R U R' U' R U' R' U' R U R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R F R' U' R F' R' U R' F' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "T Columns",
-        "subgroup": "T",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U2 r U' r2 D' r U2 r' D r2 U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 r2 D' r U r' D r2 U' r' U' r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' U R2 D r' U2 r D' R2 U' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R' F R2 F R' U2 R F' R2 F' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U2 r U' r2 D' r U2 r' D r2 U r'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 r2 D' r U r' D r2 U' r' U' r",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R' U R2 D r' U2 r D' R2 U' R",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 R' F R2 F R' U2 R F' R2 F' R",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "Sune Left Bar",
-        "subgroup": "Sune",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U R U R' U R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U r U R' U R U2 r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' U2 R U R' U R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' L U L' U L U2 L'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U R U R' U R U2 R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R' U2 R U R' U R",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U r U R' U R U2 r'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' L U L' U L U2 L'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "Sune X",
-        "subgroup": "Sune",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U L' U2 L U2 L F' L' F",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U r' F2 r U2 r U' r' F",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U L' U2 L U2 r U' r' F",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U L' U2 L U2 r U' r' F",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U r' F2 r U2 r U' r' F",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U L' U2 L U2 L F' L' F",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U R' F2 R U2 R U' r' F M'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "Sune Forward Slash",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U F R' F' R U2 R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U F U R U' R2 F' R U R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "Sune Columns",
-        "subgroup": "Sune",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "R U R' U R U' R D R' U' R D' R2",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U R U R' U' R' F R F' R U R' U R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R' F2 R2 U2 R' F R U2 R2 F2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "F R' U2 R F' R' F U2 F' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U R U R' U' R' F R F' R U R' U R U2 R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R U R' U R U' R D R' U' R D' R2",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 r' F' r2 U R' F' r' F R2 U' R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "F R' U2 R F' R' F U2 F' R",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "Sune Right Bar",
-        "subgroup": "Sune",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' R U R' U R' F R F' R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U R' U r' F R F' r U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U R' F' R U R' U R U2 R' F R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U R' U L' U R U' L U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U' R U R' U R' F R F' R U2 R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' R U R' U r' F R F' r U2 R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' R U R' F' R U R' U R U2 R' F R U' R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' R U R' U L' U R U' L U2 R'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "Sune Backslash",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U r U' r' F R' F' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U R U' L' U R' U' L",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U R U' r' F R' F' r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' L U' R' U L' U' R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "Antisune Right Bar",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U R' U' R U' R' U2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R U2 R' U' R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' L' U' L U' L' U2 L",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "Antisune Columns",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' R2 D R' U R D' R' U R' U' R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R' U' R U' R' U R' D' R U R' D R2",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R' F U2 F' R F R' U2 R F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' L' U' L U L F' L' F L' U' L U' L' U2 L",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "Antisune Backslash",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' F' r U r' U2 r' F2 r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' F' L F L' U2 L' U2 L",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 F R U' R' U R U2 R' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' M F' r U R' U2 R' F2 R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "Antisune X",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' R U2 R' U2 R' F R F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U2 R' U2 r' F R F' M'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' r U2 R' U2 R' F R F' M'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R U R' U' R' F R2 U R' U' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "Antisune Forward Slash",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' R' F R F' r U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' r' F R F' r U R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' L' U R U' L U R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U R' U L U' R U L'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "Antisune Left Bar",
-        "subgroup": "",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U R U2 R' F R' F' R U' R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' U' R U' R' U R' F R F' U R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U R U2 r' F R' F' r U' R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U L' U' L U' L F' L' F L' U2 L",
-              "note": ""
-            },
-            "source": "cubingapp"
-          }
-        ]
-      },
-      {
-        "name": "L Best",
-        "subgroup": "L",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U' F' r U r' U' r' F r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 F R U' R' U' R U R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R2 D' R U' R' D R U R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' F' L F L' U' L' U L",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U' F' r U r' U' r' F r",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 F R U' R' U' R U R' F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R2 D' R U' R' D R U R",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' F' L F L' U' L' U L",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "L Good",
-        "subgroup": "L",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U2 F R' F' R U R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 F R' F' r U R U' r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' r U' r' U' F' U F",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R U R' U' R' F R F' R U R' U' R' F R F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U2 F R' F' R U R U' R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 F R' F' r U R U' r'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 R U R' U' R' F R F' R U R' U' R' F R F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' r U' r' U' F' U F",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "L Pure",
-        "subgroup": "L",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "R U R' U R U' R' U R U' R' U R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U2 R' U' R U R' U' R U R' U' R U' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U R' U r U' R' U R U' R' U R U2 r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U' R' U2 R U R' U' R U R' U' R U R' U R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "R U R' U R U' R' U R U' R' U R U2 R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R U2 R' U' R U R' U' R U R' U' R U' R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U' R' U2 R U R' U' R U R' U' R U R' U R",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R U R' U r U' R' U R U' R' U R U2 r'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "L Front Commutator",
-        "subgroup": "L",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U2 R U2 R D R' U2 R D' R2",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R U2 r D r' U2 r D' r' R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R U R' U R' F R F' U2 R' F R F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U r' D' r U2 r' D r U2 r U r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U2 R U2 R D R' U2 R D' R2",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 R U2 r D r' U2 r D' r' R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R U R' U R' F R F' U2 R' F R F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U r' D' r U2 r' D r U2 r U r'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "L Diagonal",
-        "subgroup": "L",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U2 R U2 R2 F R F' R U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 r U2 R2 F R F' R U2 r'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "R' U' R U R' F' R U R' U' R' F R2",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U R U2 R' F R' F' R2 U2 R'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U2 R U2 R2 F R F' R U2 R'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 r U2 R2 F R F' R U2 r'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "R' U' R U R' F' R U R' U' R' F R2",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U R U2 R' F R' F' R2 U2 R'",
-            "source": "speedcubedb"
-          }
-        ]
-      },
-      {
-        "name": "L Back Commutator",
-        "subgroup": "L",
-        "algorithms": [
-          {
-            "alg": {
-              "algorithm": "U R' U2 R' D' R U2 R' D R2",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 R U R' U' R' F R2 U' R' U R U R' F'",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U2 r D r' U2 r D' r' U2 r' U' r",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": {
-              "algorithm": "U R' U2 r' D' r U2 r' D r R",
-              "note": ""
-            },
-            "source": "cubingapp"
-          },
-          {
-            "alg": "U R' U2 R' D' R U2 R' D R2",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 R U R' U' R' F R2 U' R' U R U R' F'",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U2 r D r' U2 r D' r' U2 r' U' r",
-            "source": "speedcubedb"
-          },
-          {
-            "alg": "U R' U2 r' D' r U2 r' D r R",
             "source": "speedcubedb"
           }
         ]
@@ -1812,6 +178,28 @@
         ]
       },
       {
+        "name": "Pi X",
+        "subgroup": "Pi",
+        "algorithms": [
+          {
+            "alg": "R' F2 D R2 U' R2 D' F2 R",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' R' F R U F U' R U R' U' F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "r' F2 D R2 U' R2 D' F2 r",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' F R U' R' U' R U R' U R U' R' F'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
         "name": "Pi Up Slash",
         "subgroup": "Pi",
         "algorithms": [
@@ -1829,6 +217,50 @@
           },
           {
             "alg": "R U R' U' R' F R2 U R' U' R U R' U' F'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "Pi Columns",
+        "subgroup": "Pi",
+        "algorithms": [
+          {
+            "alg": "U' r U' r2 D' r U r' D r2 U r'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 R' F R F' r U' r' U' R U' R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 R' F R F' r U' R' U' R U' r'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 L' U R U' L U' R' U' R U' R'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "Pi Left Bar",
+        "subgroup": "Pi",
+        "algorithms": [
+          {
+            "alg": "U' R' U' R' F R F' R U' R' U2 R",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R' F' U' F U' R U R' U R",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 R U R' U R U' B U' B' R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' r U R' U R' F R F' R U' R' U R U2 r'",
             "source": "speedcubedb"
           }
         ]
@@ -1900,6 +332,50 @@
         ]
       },
       {
+        "name": "U Rows",
+        "subgroup": "U",
+        "algorithms": [
+          {
+            "alg": "U' F R2 D R' U R D' R2 U' F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "F U R2 D R' U' R D' R2 F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' R' U' R F R2 D' R U R' D R2 U' F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R' F R U' R' U' R U R' F' R U R' U' R' F R F' R",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "U X",
+        "subgroup": "U",
+        "algorithms": [
+          {
+            "alg": "U2 r U' r' U r' D' r U' r' D r",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "F R U' R' U R U R' U R U' R' F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "r' U r' D' r U r' D r U' r",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' R' D R U' R U' R' U R' D' R",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
         "name": "U Upper Row",
         "subgroup": "U",
         "algorithms": [
@@ -1917,6 +393,72 @@
           },
           {
             "alg": "R' F' U' F U R",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "T Left Bar",
+        "subgroup": "T",
+        "algorithms": [
+          {
+            "alg": "U' R U R' U' R' F R F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' r U R' U' r' F R F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "y' R U R' U' R' F R F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U L U L' U' L' f U f'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "T Right Bar",
+        "subgroup": "T",
+        "algorithms": [
+          {
+            "alg": "U L' U' L U L F' L' F",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U r' F' r U r U' r' F",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' F R U' R' U R U R' F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 R' U' R' D' R U R' D R2",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "T Rows",
+        "subgroup": "T",
+        "algorithms": [
+          {
+            "alg": "R U2 R' U' R U' R2 U2 R U R' U R",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "F R' F R2 U' R' U' R U R' F2",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "r' U r U2 R2 F' r U' r' F2 R2",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' R U R' U R U2 R2 F' r U' r' F2 R",
             "source": "speedcubedb"
           }
         ]
@@ -1966,6 +508,72 @@
         ]
       },
       {
+        "name": "T Columns",
+        "subgroup": "T",
+        "algorithms": [
+          {
+            "alg": "U2 r U' r2 D' r U2 r' D r2 U r'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 r2 D' r U r' D r2 U' r' U' r",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R' U R2 D r' U2 r D' R2 U' R",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 R' F R2 F R' U2 R F' R2 F' R",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "Sune Left Bar",
+        "subgroup": "Sune",
+        "algorithms": [
+          {
+            "alg": "U R U R' U R U2 R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R' U2 R U R' U R",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U r U R' U R U2 r'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' L U L' U L U2 L'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "Sune X",
+        "subgroup": "Sune",
+        "algorithms": [
+          {
+            "alg": "U L' U2 L U2 r U' r' F",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U r' F2 r U2 r U' r' F",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U L' U2 L U2 L F' L' F",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U R' F2 R U2 R U' r' F M'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
         "name": "Sune Up Slash",
         "subgroup": "Sune",
         "algorithms": [
@@ -1983,6 +591,50 @@
           },
           {
             "alg": "U F U R U' R2 F' R U R U' R'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "Sune Columns",
+        "subgroup": "Sune",
+        "algorithms": [
+          {
+            "alg": "U R U R' U' R' F R F' R U R' U R U2 R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R U R' U R U' R D R' U' R D' R2",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 r' F' r2 U R' F' r' F R2 U' R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "F R' U2 R F' R' F U2 F' R",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "Sune Right Bar",
+        "subgroup": "Sune",
+        "algorithms": [
+          {
+            "alg": "U' R U R' U R' F R F' R U2 R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' R U R' U r' F R F' r U2 R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' R U R' F' R U R' U R U2 R' F R U' R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' R U R' U L' U R U' L U2 R'",
             "source": "speedcubedb"
           }
         ]
@@ -2137,6 +789,138 @@
           },
           {
             "alg": "U L' U' L U' L F' L' F L' U2 L",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "L Best",
+        "subgroup": "L",
+        "algorithms": [
+          {
+            "alg": "U' F' r U r' U' r' F r",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 F R U' R' U' R U R' F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R2 D' R U' R' D R U R",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' F' L F L' U' L' U L",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "L Good",
+        "subgroup": "L",
+        "algorithms": [
+          {
+            "alg": "U2 F R' F' R U R U' R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 F R' F' r U R U' r'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 R U R' U' R' F R F' R U R' U' R' F R F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' r U' r' U' F' U F",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "L Pure",
+        "subgroup": "L",
+        "algorithms": [
+          {
+            "alg": "R U R' U R U' R' U R U' R' U R U2 R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R U2 R' U' R U R' U' R U R' U' R U' R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U' R' U2 R U R' U' R U R' U' R U R' U R",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R U R' U r U' R' U R U' R' U R U2 r'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "L Front Commutator",
+        "subgroup": "L",
+        "algorithms": [
+          {
+            "alg": "U2 R U2 R D R' U2 R D' R2",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 R U2 r D r' U2 r D' r' R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R U R' U R' F R F' U2 R' F R F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U r' D' r U2 r' D r U2 r U r'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "L Diagonal",
+        "subgroup": "L",
+        "algorithms": [
+          {
+            "alg": "U2 R U2 R2 F R F' R U2 R'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 r U2 R2 F R F' R U2 r'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "R' U' R U R' F' R U R' U' R' F R2",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U R U2 R' F R' F' R2 U2 R'",
+            "source": "speedcubedb"
+          }
+        ]
+      },
+      {
+        "name": "L Back Commutator",
+        "subgroup": "L",
+        "algorithms": [
+          {
+            "alg": "U R' U2 R' D' R U2 R' D R2",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 R U R' U' R' F R2 U' R' U R U R' F'",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U2 r D r' U2 r D' r' U2 r' U' r",
+            "source": "speedcubedb"
+          },
+          {
+            "alg": "U R' U2 r' D' r U2 r' D r R",
             "source": "speedcubedb"
           }
         ]
