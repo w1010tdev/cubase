@@ -79,39 +79,48 @@ export class Cube {
 
     parseMove(moveStr) {
         const offset = (this.size - 1) / 2;
-        const match = moveStr.match(/^([UDFBRLMESxyz])(w)?(2)?(')?$/);
+        const match = moveStr.match(/^([1-9])?([UDFBRLMESxyzudfbrl])(w)?(2)?(')?$/);
         if (!match) return null;
 
-        const face = match[1];
-        const isWide = !!match[2];
-        const isDouble = !!match[3];
-        const isPrime = !!match[4];
+        const prefix = match[1];
+        let face = match[2];
+        let isWide = !!match[3];
+        const isDouble = !!match[4];
+        const isPrime = !!match[5];
+
+        if (/[udfbrl]/.test(face)) {
+            face = face.toUpperCase();
+            isWide = true;
+        }
 
         let amount = isPrime ? -1 : 1;
         if (isDouble) amount = 2;
 
         let axis, layerIndices = [];
-
-        // R L U D F B
-        // R is positive X, L is negative X. When looking at R, clockwise means -Y to Z (angle < 0 for rotateX)
-        // Standard rotation rule:
-        // x axis: L(-), M, R(+)
-        // y axis: D(-), E, U(+)
-        // z axis: B(-), S, F(+)
-        // So R clockwise -> rotateX -90deg? 
-        // Let's define standard axes: 
-        // rotateX: y->z, z->-y (clockwise looking from +x) -> R turns require amount=-1
         
+        let depth = prefix ? parseInt(prefix) : (isWide ? 2 : 1);
+        let startLayer = isWide ? 1 : depth;
+        let endLayer = depth;
+        
+        const getIndices = (dir) => {
+            let indices = [];
+            for (let i = startLayer; i <= endLayer; i++) {
+                if (dir === 1) indices.push(offset - (i - 1));
+                else indices.push(-offset + (i - 1));
+            }
+            return indices;
+        };
+
         // E 跟 D 方向一致，M 跟 L 一致，S 跟 F 一致
         // 整体旋转 x 跟 R 一致，y 跟 U 一致，z 跟 F 一致
         
         switch (face) {
-            case 'R': axis = 'x'; amount *= -1; layerIndices = [offset]; if(isWide) layerIndices.push(offset - 1); break;
-            case 'L': axis = 'x'; amount *= 1;  layerIndices = [-offset]; if(isWide) layerIndices.push(-offset + 1); break;
-            case 'U': axis = 'y'; amount *= -1; layerIndices = [offset]; if(isWide) layerIndices.push(offset - 1); break;
-            case 'D': axis = 'y'; amount *= 1;  layerIndices = [-offset]; if(isWide) layerIndices.push(-offset + 1); break;
-            case 'F': axis = 'z'; amount *= -1; layerIndices = [offset]; if(isWide) layerIndices.push(offset - 1); break;
-            case 'B': axis = 'z'; amount *= 1;  layerIndices = [-offset]; if(isWide) layerIndices.push(-offset + 1); break;
+            case 'R': axis = 'x'; amount *= -1; layerIndices = getIndices(1); break;
+            case 'L': axis = 'x'; amount *= 1;  layerIndices = getIndices(-1); break;
+            case 'U': axis = 'y'; amount *= -1; layerIndices = getIndices(1); break;
+            case 'D': axis = 'y'; amount *= 1;  layerIndices = getIndices(-1); break;
+            case 'F': axis = 'z'; amount *= -1; layerIndices = getIndices(1); break;
+            case 'B': axis = 'z'; amount *= 1;  layerIndices = getIndices(-1); break;
             case 'M': axis = 'x'; amount *= 1;  layerIndices = [0]; break;
             case 'E': axis = 'y'; amount *= 1;  layerIndices = [0]; break;
             case 'S': axis = 'z'; amount *= -1; layerIndices = [0]; break;
@@ -136,4 +145,34 @@ export function optimizeScramble(movesArr) {
     // Simple mock optimizer: just returns joined string.
     // Full move cancellation (e.g. U U' -> '') could be implemented here.
     return movesArr.join(' ');
+}
+
+export function generateScramble(size = 3, length = 21) {
+    const faces = ['U', 'D', 'F', 'B', 'R', 'L'];
+    const modifiers = ['', "'", '2'];
+    let scramble = [];
+    let lastFace = '';
+
+    for (let i = 0; i < length; i++) {
+        let face;
+        do {
+            face = faces[Math.floor(Math.random() * faces.length)];
+        } while (face === lastFace);
+
+        let mod = modifiers[Math.floor(Math.random() * modifiers.length)];
+        let move = face + mod;
+        
+        // Add random wide or inner slice moves for higher orders
+        if (size > 3 && Math.random() > 0.5) {
+            let depth = Math.floor(Math.random() * Math.floor(size / 2)) + 1;
+            if (depth > 1) {
+               let isWide = Math.random() > 0.5 ? 'w' : '';
+               move = (depth > 2 ? depth : '') + face + isWide + mod; 
+            }
+        }
+        
+        scramble.push(move);
+        lastFace = face;
+    }
+    return optimizeScramble(scramble);
 }

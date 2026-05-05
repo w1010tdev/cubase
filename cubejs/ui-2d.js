@@ -27,7 +27,7 @@ export class Cube2DUI {
             marker.setAttribute('id', id);
             marker.setAttribute('markerWidth', '6');
             marker.setAttribute('markerHeight', '6');
-            marker.setAttribute('refX', '5');
+            marker.setAttribute('refX', '6'); // Exactly at tip
             marker.setAttribute('refY', '3');
             marker.setAttribute('orient', 'auto');
             const polygon = document.createElementNS(this.svgNS, 'polygon');
@@ -68,18 +68,13 @@ export class Cube2DUI {
 
         // Render U face (center grid)
         uLayer.forEach(cubie => {
-            // Map x,z to SVG coordinates
-            // math: +x is right, +z is down(front)
-            // SVG: +x is right, +y is down
             const svgX = (cubie.pos.x + offset + 1) * cellSize;
             const svgY = (cubie.pos.z + offset + 1) * cellSize;
             
-            // Top color (U)
             const uColor = getColor(cubie, 'U');
             const rect = this.createRect(svgX, svgY, cellSize, cellSize, uColor);
             svg.appendChild(rect);
 
-            // Side colors (F, B, L, R)
             if (cubie.pos.z > offset - 0.1) { // Front edge
                 const fColor = getColor(cubie, 'F');
                 svg.appendChild(this.createRect(svgX, svgY + cellSize, cellSize, cellSize/3, fColor));
@@ -118,6 +113,7 @@ export class Cube2DUI {
                 
                 let bestArrows = null;
                 let minArrowCount = Infinity;
+                let bestIsEven = false;
                 let maxHorizontalCount = -1;
 
                 rotations.forEach((rotFunc) => {
@@ -148,39 +144,61 @@ export class Cube2DUI {
                         const isCorner = Math.abs(Math.abs(cubie.initialPos.x) - offset) < 0.1 && 
                                          Math.abs(Math.abs(cubie.initialPos.z) - offset) < 0.1;
 
-                        currentArrows.push({
-                            startX, startY, endX, endY, 
-                            isCorner: isCorner
-                        });
+                        currentArrows.push({startX, startY, endX, endY, isCorner});
                     });
 
+                    // Calculate Parity
+                    let cycles = 0;
+                    let visited = new Set();
+                    let N = currentArrows.length;
+                    let graph = new Map();
+                    currentArrows.forEach(a => {
+                        const key = `${a.startX.toFixed(2)},${a.startY.toFixed(2)}`;
+                        const val = `${a.endX.toFixed(2)},${a.endY.toFixed(2)}`;
+                        graph.set(key, val);
+                    });
+
+                    currentArrows.forEach(a => {
+                        const startKey = `${a.startX.toFixed(2)},${a.startY.toFixed(2)}`;
+                        if (!visited.has(startKey)) {
+                            cycles++;
+                            let curr = startKey;
+                            while (curr && !visited.has(curr)) {
+                                visited.add(curr);
+                                curr = graph.get(curr);
+                            }
+                        }
+                    });
+                    const isEvenPerm = N === 0 ? true : (N - cycles) % 2 === 0;
+
+                    let shouldReplace = false;
                     if (currentArrows.length < minArrowCount) {
+                        shouldReplace = true;
+                    } else if (currentArrows.length === minArrowCount) {
+                        if (isEvenPerm && !bestIsEven) {
+                            shouldReplace = true;
+                        } else if (isEvenPerm === bestIsEven) {
+                            if (horizontalCount > maxHorizontalCount) {
+                                shouldReplace = true;
+                            }
+                        }
+                    }
+
+                    if (shouldReplace || bestArrows === null) {
                         minArrowCount = currentArrows.length;
+                        bestIsEven = isEvenPerm;
                         maxHorizontalCount = horizontalCount;
                         bestArrows = currentArrows;
-                    } else if (currentArrows.length === minArrowCount) {
-                        if (horizontalCount > maxHorizontalCount) {
-                            maxHorizontalCount = horizontalCount;
-                            bestArrows = currentArrows;
-                        }
                     }
                 });
 
                 if (bestArrows) {
                     bestArrows.forEach(arrow => {
                         const {startX, startY, endX, endY, isCorner} = arrow;
-                        const dx = endX - startX;
-                        const dy = endY - startY;
-                        const len = Math.sqrt(dx*dx + dy*dy);
-                        if (len < 0.1) return;
-
-                        const shortenRatio = Math.max(0.1, len - 6) / len;
-                        const finalEndX = startX + dx * shortenRatio;
-                        const finalEndY = startY + dy * shortenRatio;
 
                         const path = document.createElementNS(this.svgNS, 'path');
-                        
-                        path.setAttribute('d', `M ${startX} ${startY} L ${finalEndX} ${finalEndY}`);
+                        // Exact center-to-center drawing without shortening
+                        path.setAttribute('d', `M ${startX} ${startY} L ${endX} ${endY}`);
                         
                         const color = isCorner ? 'rgba(210, 40, 40, 0.9)' : 'rgba(40, 100, 210, 0.9)';
                         const markerId = isCorner ? 'arrowhead-corner' : 'arrowhead-edge';
@@ -210,6 +228,7 @@ export class Cube2DUI {
         return rect;
     }
 
-    // drawArrow(idx1, idx2) logic could go here
-    // using SVG <line> and <marker>
+    getSVG() {
+        return this.container.innerHTML;
+    }
 }

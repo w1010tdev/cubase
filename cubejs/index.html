@@ -14,6 +14,8 @@
         <button id="resume-btn" style="display:none;">Resume</button>
         <button id="reset-btn">Reset Cube</button>
         <button id="reset-view-btn">Reset View</button>
+        <button id="scramble-btn">Scramble</button>
+        <button id="export-svg-btn">Export SVG</button>
         <label>
             Size: 
             <input type="number" id="size-input" value="3" min="2" max="7" style="width: 40px;">
@@ -36,7 +38,7 @@
     <script type="module">
         import { Cube3DUI } from './ui-3d.js';
         import { Cube2DUI } from './ui-2d.js';
-        import { Cube } from './cube.js';
+        import { Cube, generateScramble } from './cube.js';
 
         let size = 3;
         let ui3d, ui2d;
@@ -80,6 +82,28 @@
             document.getElementById('play-btn').disabled = false;
             document.getElementById('pause-btn').style.display = 'none';
             document.getElementById('resume-btn').style.display = 'none';
+        });
+
+        document.getElementById('scramble-btn').addEventListener('click', async () => {
+            if (ui3d && ui3d.isPlaying) ui3d.stop();
+            init(); // Reset first
+            const scramble = generateScramble(size, size > 3 ? 40 : 21);
+            document.getElementById('moves-input').value = scramble;
+            document.getElementById('play-btn').click(); // Auto-play the scramble
+        });
+
+        document.getElementById('export-svg-btn').addEventListener('click', () => {
+            if (!ui2d) return;
+            const svgString = ui2d.getSVG();
+            const blob = new Blob([svgString], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'cube-plan-view.svg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         });
 
         document.getElementById('reset-view-btn').addEventListener('click', () => {
