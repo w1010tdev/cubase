@@ -85,6 +85,19 @@ ui2d.render(); // Update 2D view after 3D animation finishes
 
 ---
 
+## 🚀 Recent Architecture Updates (As of 2026-05)
+
+*   **Auto-Scaling Container**: `Cube3DUI` now dynamically calculates a `baseScale` to ensure higher-order matrices (e.g., 7x7) remain fully visible within the viewport without clipping.
+*   **Smart PLL Arrows Engine (`ui-2d.js`)**: 
+    *   Added a toggle (`showArrows`) for drawing SVG permutation arrows.
+    *   Features a virtual AUF (Adjust U Face) evaluator that checks all 4 possible rotations of the U-layer and selects the optimal angle with the fewest displacement arrows, breaking ties by preferring horizontal lines.
+    *   Strictly uses straight lines and distinct color-coding (**Red** for corners, **Blue** for edges).
+*   **Enhanced Playback State (`ui-3d.js`)**: Introduced robust interruption control state (`isPlaying`, `isPaused`) allowing real-time Pause/Resume logic, preventing double-play ghosting.
+*   **WCA Notation Parity**: Explicit implementation of `E` (follows D), `M` (follows L), `S` (follows F) slices, and entire cube rotations `x, y, z`.
+*   **Progress Callbacks**: Expanded `onProgress(index, queue)` callback hooks, natively supported in `index.html` via DOM span toggling (`played`, `current` tags).
+
+---
+
 ## 🎯 Extension Points for Secondary Development
 
 If you are an agent tasked with extending this project, here are the targeted injection points:
@@ -98,6 +111,11 @@ If you are an agent tasked with extending this project, here are the targeted in
     *   Map the `Cubie` normal vectors to a Kociemba string or Thistlethwaite algorithm input.
 3.  **2D SVG Arrows (PLL/OLL Guides)**:
     *   *File*: `ui-2d.js`
-    *   *Task*: Implement the `drawArrow(idx1, idx2)` placeholder. Inject `<line>` and `<marker>` tags into the SVG to illustrate piece permutation.
-4.  **Virtual WebGL Render**:
+    *   *Current Implementation*: Features a smart virtual AUF optimizer that detects pure PLL states and calculates minimal rotation offsets. It renders straight lines with specific colors (**Red** for corners, **Blue** for edges) pointing from `initialPos` to `pos`.
+    *   *Task*: Enhance OLL detection logic, add custom arrow styles or integrate user-defined drawing for setup moves.
+4.  **Auto-Scaling & UI Layout**:
+    *   *File*: `ui-3d.js`, `index.html`
+    *   *Current Implementation*: Higher-order cubes dynamically adjust their `scale` property based on `baseScale` to prevent rendering overflow. Contains integrated playback progress bar and toggle states.
+    *   *Task*: Fine-tune scale breakpoints for extremely large matrices (NxN > 15).
+5.  **Virtual WebGL Render**:
     *   If the "Zero-Dependency" rule is lifted, `cube.js` state can be directly synced to a `Three.js` scene by translating `cubie.pos` and reconstructing Quaternions from `cubie.normals`.

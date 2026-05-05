@@ -168,7 +168,7 @@ export class Cube2DUI {
 
                 if (bestArrows) {
                     bestArrows.forEach(arrow => {
-                        const {startX, startY, endX, endY, isStraight} = arrow;
+                        const {startX, startY, endX, endY, isCorner} = arrow;
                         const dx = endX - startX;
                         const dy = endY - startY;
                         const len = Math.sqrt(dx*dx + dy*dy);
@@ -180,20 +180,15 @@ export class Cube2DUI {
 
                         const path = document.createElementNS(this.svgNS, 'path');
                         
-                        if (isStraight) {
-                            path.setAttribute('d', `M ${startX} ${startY} L ${finalEndX} ${finalEndY}`);
-                        } else {
-                            const midX = (startX + endX) / 2;
-                            const midY = (startY + endY) / 2;
-                            const ctrlX = midX - dy * 0.35;
-                            const ctrlY = midY + dx * 0.35;
-                            path.setAttribute('d', `M ${startX} ${startY} Q ${ctrlX} ${ctrlY} ${finalEndX} ${finalEndY}`);
-                        }
+                        path.setAttribute('d', `M ${startX} ${startY} L ${finalEndX} ${finalEndY}`);
                         
+                        const color = isCorner ? 'rgba(210, 40, 40, 0.9)' : 'rgba(40, 100, 210, 0.9)';
+                        const markerId = isCorner ? 'arrowhead-corner' : 'arrowhead-edge';
+
                         path.setAttribute('fill', 'none');
-                        path.setAttribute('stroke', 'rgba(0,0,0,0.7)');
+                        path.setAttribute('stroke', color);
                         path.setAttribute('stroke-width', '2.5');
-                        path.setAttribute('marker-end', 'url(#arrowhead)');
+                        path.setAttribute('marker-end', `url(#${markerId})`);
                         svg.appendChild(path);
                     });
                 }
