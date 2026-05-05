@@ -1,0 +1,120 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #333;
+    color: white;
+    overflow: hidden;
+}
+
+#controls {
+    padding: 10px;
+    background: #222;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#controls input[type="text"] {
+    width: 200px;
+    padding: 5px;
+}
+
+#progress-bar {
+    padding: 8px 10px;
+    background: #111;
+    min-height: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.move-tag {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 14px;
+    background: transparent;
+    color: #999;
+}
+
+.move-tag.played {
+    background: #4CAF50; /* Green background for played */
+    color: white;
+}
+
+.move-tag.current {
+    background: #FFEB3B; /* Yellow background for current */
+    color: black;
+    font-weight: bold;
+}
+
+#views {
+    display: flex;
+    height: calc(100vh - 50px);
+}
+
+#cube-container-3d {
+    flex: 1;
+    position: relative;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+#cube-container-3d:active {
+    cursor: grabbing;
+}
+
+#cube-container-2d {
+    width: 300px;
+    background: #444;
+    padding: 20px;
+    border-left: 2px solid #222;
+}
+
+.cube-scene {
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.cube-wrapper {
+    position: relative;
+    transform-style: preserve-3d;
+    /* Center the wrapper around 0,0,0 */
+}
+
+.animation-group {
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+.cubie {
+    position: absolute;
+    transform-style: preserve-3d;
+    /* Centered at origin so translations work from center */
+    margin-left: -25px;
+    margin-top: -25px;
+}
+
+.face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 2px solid #000;
+    border-radius: 3px;
+    backface-visibility: hidden;
+}
+
+/* Face transforms for a 50px cube */
+.face-U { transform: rotateX(90deg) translateZ(25px); }
+.face-D { transform: rotateX(-90deg) translateZ(25px); }
+.face-F { transform: translateZ(25px); }
+.face-B { transform: rotateY(180deg) translateZ(25px); }
+.face-R { transform: rotateY(90deg) translateZ(25px); }
+.face-L { transform: rotateY(-90deg) translateZ(25px); }

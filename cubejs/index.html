@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rubik's Cube Engine</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="controls">
+        <input type="text" id="moves-input" placeholder="e.g. R U R' U' x M E" value="R U R' U' x M E">
+        <button id="play-btn">Play</button>
+        <button id="pause-btn" style="display:none;">Pause</button>
+        <button id="resume-btn" style="display:none;">Resume</button>
+        <button id="reset-btn">Reset Cube</button>
+        <button id="reset-view-btn">Reset View</button>
+        <label>
+            Size: 
+            <input type="number" id="size-input" value="3" min="2" max="7" style="width: 40px;">
+        </label>
+        <label>
+            Speed (ms): 
+            <input type="number" id="speed-input" value="300" min="50" max="2000" step="50" style="width: 60px;">
+        </label>
+        <label>
+            <input type="checkbox" id="arrows-chk"> Show PLL Arrows
+        </label>
+    </div>
+    <div id="progress-bar"></div>
+    
+    <div id="views">
+        <div id="cube-container-3d"></div>
+        <div id="cube-container-2d"></div>
+    </div>
+
+    <script type="module">
+        import { Cube3DUI } from './ui-3d.js';
+        import { Cube2DUI } from './ui-2d.js';
+        import { Cube } from './cube.js';
+
+        let size = 3;
+        let ui3d, ui2d;
+
+        function init() {
+            ui3d = new Cube3DUI('cube-container-3d', size);
+            ui3d.animationDuration = parseInt(document.getElementById('speed-input').value);
+            ui2d = new Cube2DUI('cube-container-2d', ui3d.cube);
+            
+            const arrowsChk = document.getElementById('arrows-chk');
+            if (arrowsChk) {
+                ui2d.showArrows = arrowsChk.checked;
+            }
+
+            ui3d.onMoveFinished = () => {
+                ui2d.render();
+            };
+            ui2d.render();
+        }
+
+        document.getElementById('size-input').addEventListener('change', (e) => {
+            size = parseInt(e.target.value);
+            init();
+        });
+
+        document.getElementById('speed-input').addEventListener('change', (e) => {
+            if (ui3d) ui3d.animationDuration = parseInt(e.target.value);
+        });
+
+        document.getElementById('arrows-chk').addEventListener('change', (e) => {
+            if (ui2d) {
+                ui2d.showArrows = e.target.checked;
+                ui2d.render();
+            }
+        });
+
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            if (ui3d) ui3d.stop();
+            init();
+            document.getElementById('progress-bar').innerHTML = '';
+            document.getElementById('play-btn').disabled = false;
+            document.getElementById('pause-btn').style.display = 'none';
+            document.getElementById('resume-btn').style.display = 'none';
+        });
+
+        document.getElementById('reset-view-btn').addEventListener('click', () => {
+            if (ui3d) ui3d.resetView();
+        });
+
+        document.getElementById('play-btn').addEventListener('click', async () => {
+            if (ui3d && ui3d.isPlaying) return;
+            const moves = document.getElementById('moves-input').value;
+            ui3d.stop();
+            
+            document.getElementById('play-btn').disabled = true;
+            document.getElementById('pause-btn').style.display = 'inline-block';
+            document.getElementById('resume-btn').style.display = 'none';
+            
+            ui3d.onProgress = (index, movesList) => {
+                const bar = document.getElementById('progress-bar');
+                bar.innerHTML = '';
+                movesList.forEach((m, i) => {
+                    const span = document.createElement('span');
+                    span.textContent = m;
+                    span.className = 'move-tag';
+                    if (i < index) span.classList.add('played');
+                    else if (i === index) span.classList.add('current');
+                    bar.appendChild(span);
+                });
+            };
+
+            await ui3d.playSequence(moves);
+            
+            document.getElementById('play-btn').disabled = false;
+            document.getElementById('pause-btn').style.display = 'none';
+            document.getElementById('resume-btn').style.display = 'none';
+            ui2d.render();
+        });
+
+        document.getElementById('pause-btn').addEventListener('click', () => {
+            if (ui3d) {
+                ui3d.pause();
+                document.getElementById('pause-btn').style.display = 'none';
+                document.getElementById('resume-btn').style.display = 'inline-block';
+            }
+        });
+
+        document.getElementById('resume-btn').addEventListener('click', () => {
+            if (ui3d) {
+                ui3d.resume();
+                document.getElementById('pause-btn').style.display = 'inline-block';
+                document.getElementById('resume-btn').style.display = 'none';
+            }
+        });
+
+        init();
+    </script>
+</body>
+</html>
