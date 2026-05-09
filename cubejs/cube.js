@@ -174,46 +174,68 @@ export class Cube {
 
 // Scramble Optimizer (Cancellation)
 export function optimizeScramble(movesArr) {
-    // Simple mock optimizer: just returns joined string.
-    // Full move cancellation (e.g. U U' -> '') could be implemented here.
     return movesArr.join(' ');
 }
 
 export function generateScramble(size = 3) {
-    const lengths = {2: 11, 3: 21, 4: 40, 5: 60, 6: 80, 7: 100};
-    const length = lengths[size] || (size * 15);
-    const faces = ['U', 'D', 'F', 'B', 'R', 'L'];
+    const length = size <= 3 ? (size === 2 ? 11 : 21) : (size - 2) * 20;
+    const axes = [ ['U', 'D'], ['R', 'L'], ['F', 'B'] ];
     const modifiers = ['', "'", '2'];
     let scramble = [];
-    let lastFace = '';
-    const oppositeFace = { 'U':'D', 'D':'U', 'F':'B', 'B':'F', 'R':'L', 'L':'R' };
+    let history = [];
 
     for (let i = 0; i < length; i++) {
-        let face;
-        do {
-            face = faces[Math.floor(Math.random() * faces.length)];
-        } while (face === lastFace || (size > 3 && face === oppositeFace[lastFace] && Math.random() < 0.5));
-
-        let mod = modifiers[Math.floor(Math.random() * modifiers.length)];
-        let move = face + mod;
+        let axis, faceIdx, depth, isWide, isInner;
+        let isValid = false;
         
-        // Add random wide or inner slice moves for higher orders to scramble centers
-        if (size > 3) {
-            const type = Math.random();
-            const maxDepth = Math.floor(size / 2);
-            if (type < 0.4 && maxDepth > 1) {
-                // Wide move (e.g., 3Rw)
-                let depth = Math.floor(Math.random() * maxDepth) + 1;
-                move = (depth > 1 ? depth : '') + face + 'w' + mod; 
-            } else if (type < 0.6 && maxDepth > 1) {
-                // Inner slice (e.g., 2R)
-                let depth = Math.floor(Math.random() * maxDepth) + 1;
-                move = (depth > 1 ? depth : '') + face + mod;
+        while (!isValid) {
+            axis = Math.floor(Math.random() * 3);
+            faceIdx = Math.floor(Math.random() * 2);
+            depth = 1;
+            isWide = false;
+            isInner = false;
+            
+            if (size > 3) {
+                const maxDepth = Math.floor(size / 2);
+                depth = Math.floor(Math.random() * maxDepth) + 1;
+                if (depth > 1) {
+                    if (Math.random() < 0.5) isWide = true;
+                    else isInner = true;
+                }
+            }
+            
+            isValid = true;
+            if (history.length > 0) {
+                const prev = history[history.length - 1];
+                if (prev.axis === axis) {
+                    if (prev.faceIdx === faceIdx && prev.depth === depth && prev.isWide === isWide && prev.isInner === isInner) {
+                        isValid = false; // Avoid identical slice/block consecutively
+                    }
+                    if (history.length > 1) {
+                        const prev2 = history[history.length - 2];
+                        if (prev2.axis === axis) {
+                            isValid = false; // Limit to 2 consecutive moves on the same axis (e.g., R then L)
+                        }
+                    }
+                }
+            }
+        }
+        
+        history.push({ axis, faceIdx, depth, isWide, isInner });
+        
+        const face = axes[axis][faceIdx];
+        const mod = modifiers[Math.floor(Math.random() * modifiers.length)];
+        
+        let move = face + mod;
+        if (depth > 1) {
+            if (isWide) {
+                move = (depth > 2 ? depth : '') + face + 'w' + mod;
+            } else if (isInner) {
+                move = depth + face + mod;
             }
         }
         
         scramble.push(move);
-        lastFace = face;
     }
     return optimizeScramble(scramble);
 }
