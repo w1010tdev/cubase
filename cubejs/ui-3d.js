@@ -23,8 +23,14 @@ export class Cube3DUI {
         this.scene.appendChild(this.cubeWrapper);
         this.container.appendChild(this.scene);
 
-        // Calculate auto-scale based on cube size
-        this.baseScale = 3.5 / Math.max(3.5, this.size);
+        // Calculate auto-scale based on cube size and container size
+        this.updateScale();
+        
+        // Add ResizeObserver for responsive scaling
+        if (window.ResizeObserver) {
+            this.resizeObserver = new ResizeObserver(() => this.updateScale());
+            this.resizeObserver.observe(this.container);
+        }
 
         // Pre-create styles for sizes
         const cubieSize = 50; // px
@@ -52,6 +58,34 @@ export class Cube3DUI {
         });
 
         this.updateDOMTransforms();
+    }
+
+    updateScale() {
+        const containerWidth = this.container.clientWidth || 400;
+        const containerHeight = this.container.clientHeight || 400;
+        const minDimension = Math.min(containerWidth, containerHeight);
+        
+        // Base scale targets a 3x3 cube taking up roughly 50% of the minimum container dimension
+        // A 3x3 cube is 150px wide. 150 * scale = minDimension * 0.5 => scale = minDimension / 300
+        const scaleFactor = minDimension / 300;
+        
+        // Apply cube size scaling: bigger cubes need to be scaled down
+        const sizeScale = 3.5 / Math.max(3.5, this.size);
+        
+        this.baseScale = scaleFactor * sizeScale;
+        
+        // Clamp scale to reasonable values
+        this.baseScale = Math.max(0.2, Math.min(this.baseScale, 2.0));
+        
+        if (this.cubeWrapper) {
+            this.cubeWrapper.style.transform = `scale(${this.baseScale}) rotateX(${this.rotX || -20}deg) rotateY(${this.rotY || -30}deg)`;
+        }
+    }
+
+    destroy() {
+        if (this.resizeObserver) {
+            this.resizeObserver.disconnect();
+        }
     }
 
     updateDOMTransforms() {

@@ -44,6 +44,7 @@
         let ui3d, ui2d;
 
         function init() {
+            if (ui3d && ui3d.destroy) ui3d.destroy();
             ui3d = new Cube3DUI('cube-container-3d', size);
             ui3d.animationDuration = parseInt(document.getElementById('speed-input').value);
             ui2d = new Cube2DUI('cube-container-2d', ui3d.cube);
