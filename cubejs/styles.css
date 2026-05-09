@@ -26,18 +26,25 @@ body {
     min-height: 24px;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
     align-items: center;
     border-bottom: 1px solid #333;
 }
 
 .move-tag {
-    padding: 3px 8px;
+    padding: 3px 6px;
+    margin: 2px 3px;
     border-radius: 4px;
     font-family: monospace;
     font-size: 14px;
     background: transparent;
     color: #999;
+}
+
+.bracket-tag {
+    padding: 3px 2px;
+    margin: 2px 0px;
+    font-weight: bold;
+    color: #ccc;
 }
 
 .move-tag.played {
@@ -91,6 +98,7 @@ body {
 .animation-group {
     position: absolute;
     transform-style: preserve-3d;
+    will-change: transform;
 }
 
 .cubie {
@@ -99,6 +107,7 @@ body {
     /* Centered at origin so translations work from center */
     margin-left: -25px;
     margin-top: -25px;
+    will-change: transform;
 }
 
 .face {
@@ -109,6 +118,7 @@ body {
     border: 2px solid #000;
     border-radius: 3px;
     backface-visibility: hidden;
+    will-change: transform;
 }
 
 /* Face transforms for a 50px cube */

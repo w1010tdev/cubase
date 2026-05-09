@@ -18,7 +18,7 @@
         <button id="export-svg-btn">Export SVG</button>
         <label>
             Size: 
-            <input type="number" id="size-input" value="3" min="2" max="7" style="width: 40px;">
+            <input type="number" id="size-input" value="3" min="2" max="15" style="width: 40px;">
         </label>
         <label>
             Speed (ms): 
@@ -87,7 +87,7 @@
         document.getElementById('scramble-btn').addEventListener('click', async () => {
             if (ui3d && ui3d.isPlaying) ui3d.stop();
             init(); // Reset first
-            const scramble = generateScramble(size, size > 3 ? 40 : 21);
+            const scramble = generateScramble(size);
             document.getElementById('moves-input').value = scramble;
             document.getElementById('play-btn').click(); // Auto-play the scramble
         });
@@ -126,6 +126,9 @@
                     const span = document.createElement('span');
                     span.textContent = m;
                     span.className = 'move-tag';
+                    if (m === '(' || m === ')') {
+                        span.classList.add('bracket-tag');
+                    }
                     if (i < index) span.classList.add('played');
                     else if (i === index) span.classList.add('current');
                     bar.appendChild(span);

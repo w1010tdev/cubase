@@ -1,5 +1,5 @@
 // ui-3d.js
-import { Cube } from './cube.js';
+import { Cube, expandAlg } from './cube.js';
 
 export class Cube3DUI {
     constructor(containerId, size = 3) {
@@ -92,7 +92,15 @@ export class Cube3DUI {
 
     async playSequence(movesStr) {
         if (!movesStr.trim()) return;
-        this.movesQueue = movesStr.trim().split(/\s+/).filter(m => m);
+        
+        // Expand algorithms before playback (handles commutators, repeats)
+        const expandedStr = expandAlg(movesStr);
+        this.movesQueue = expandedStr.trim().split(/\s+/).filter(m => {
+            if (!m) return false;
+            if (m === '(' || m === ')') return true;
+            return this.cube.parseMove(m) !== null;
+        });
+        
         this.currentMoveIndex = 0;
         this.isPlaying = true;
         this.isPaused = false;
@@ -107,8 +115,19 @@ export class Cube3DUI {
             if (this.onProgress) this.onProgress(this.currentMoveIndex, this.movesQueue);
             
             const m = this.movesQueue[this.currentMoveIndex];
-            await this.animateMove(m);
-            if (this.onMoveFinished) this.onMoveFinished();
+            
+            if (m === '(' || m === ')') {
+                // If it's a consecutive pause sequence like )( or () or )), we can optionally merge them
+                // Here we merge )(
+                if (m === ')' && this.currentMoveIndex + 1 < this.movesQueue.length && this.movesQueue[this.currentMoveIndex + 1] === '(') {
+                    this.currentMoveIndex++;
+                }
+                // Pause for parentheses boundaries
+                await new Promise(r => setTimeout(r, this.animationDuration));
+            } else {
+                await this.animateMove(m);
+                if (this.onMoveFinished) this.onMoveFinished();
+            }
             
             this.currentMoveIndex++;
         }
@@ -130,7 +149,7 @@ export class Cube3DUI {
     animateMove(moveStr) {
         return new Promise(resolve => {
             const parsed = this.cube.parseMove(moveStr);
-            if (!parsed) {
+            if (!parsed || parsed.isPause) {
                 resolve();
                 return;
             }
