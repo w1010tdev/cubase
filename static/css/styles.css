@@ -1,0 +1,73 @@
+/* Custom tweaks */
+
+/* Serif font import */
+@font-face {
+    font-family: 'SerifDisplay';
+    src: url('/static/1.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.font-serif {
+    font-family: 'SerifDisplay', Georgia, 'Times New Roman', serif;
+}
+
+.sans {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.nav-link.active {
+    background-color: #e6e4dc; /* light-hover */
+    color: #1a1a1a;
+}
+
+html.dark .nav-link.active {
+    background-color: #1a1a1a; /* dark-hover */
+    color: #e5e5e5;
+}
+
+/* Card - square corners */
+.case-card {
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 1px solid #e6e4dc;
+}
+html.dark .case-card {
+    border-color: #333333;
+}
+.case-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: background-color 0.15s;
+}
+.btn-primary {
+    background-color: #1a1a1a;
+    color: #fff;
+}
+html.dark .btn-primary {
+    background-color: #e5e5e5;
+    color: #000;
+}
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Modal Staging area (invisible) */
+#pdf-staging-area {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    width: 1000px;
+    background: #fff;
+    z-index: -1;
+}
