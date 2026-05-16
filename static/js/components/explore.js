@@ -8,8 +8,229 @@ const exploreState = {
     level: 'puzzles',
     searchQuery: '',
     expandedPuzzles: new Set(),
-    restoreSearchFocus: false
+    restoreSearchFocus: false,
+    showArrows: true
 };
+
+/* ---- Global 3D Modal Singleton ---- */
+const _3dModal = (() => {
+    let _init = false, _panel, _player, _titleEl, _seqEl, _progEl, _tagsEl;
+    let _speedIn, _speedDisp;
+    let _playBtn, _backBtn, _fwdBtn, _resetBtn, _closeBtn, _bracketToggle, _bracketThumb;
+    let _ui = null, _moves = [], _curIdx = 0, _size = 3, _playOffset = 0, _bracketPause = true, _algorithm = '', _caseName = '', _puzzleSize = 3;
+
+    function _updatePlayBtn() {
+        if (!_playBtn) return;
+        if (_ui && _ui.isPaused) {
+            _playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Continue';
+            _playBtn.className = 'col-span-5 py-4 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold shadow-md transition flex justify-center items-center gap-2 text-lg active:scale-[0.98]';
+        } else if (_curIdx >= _moves.length && _moves.length > 0) {
+            _playBtn.innerHTML = '<i class="fa-solid fa-rotate-left"></i> Reset';
+            _playBtn.className = 'col-span-5 py-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg font-bold shadow-md transition flex justify-center items-center gap-2 text-lg active:scale-[0.98]';
+        } else if (_ui && _ui.isPlaying) {
+            _playBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Pause';
+            _playBtn.className = 'col-span-5 py-4 bg-yellow-600 hover:bg-yellow-700 text-white rounded-lg font-bold shadow-md transition flex justify-center items-center gap-2 text-lg active:scale-[0.98]';
+        } else {
+            _playBtn.innerHTML = '<i class="fa-solid fa-play"></i> Play';
+            _playBtn.className = 'col-span-5 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-md transition flex justify-center items-center gap-2 text-lg active:scale-[0.98]';
+        }
+    }
+
+    function _initDOM() {
+        if (_init) return;
+        _init = true;
+        _panel = document.createElement('div');
+        _panel.id = 'global-3d-panel';
+        _panel.className = 'fixed inset-0 z-[100] flex items-center justify-center bg-black/80 hidden backdrop-blur-sm';
+        _panel.style.position = 'fixed';
+        _panel.innerHTML = [
+            '<div class="bg-light-surface dark:bg-dark-surface w-full h-full flex flex-col relative overflow-hidden">',
+            '  <div class="px-5 py-4 border-b border-light-border dark:border-dark-border flex items-center justify-between bg-light-menu dark:bg-dark-surface shrink-0 z-20 shadow-md">',
+            '    <div class="font-bold text-lg flex items-center"><i class="fa-solid fa-cube mr-3 text-blue-500"></i><span id="g3d-title"></span> - 3D View</div>',
+            '    <button type="button" class="w-10 h-10 flex items-center justify-center rounded-full text-light-muted dark:text-dark-muted hover:bg-light-hover dark:hover:bg-dark-hover hover:text-red-500 transition" id="g3d-close"><i class="fa-solid fa-xmark fa-xl"></i></button>',
+            '  </div>',
+            '  <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative w-full h-full">',
+            '    <div class="flex-1 h-full border-b lg:border-b-0 lg:border-r border-light-border dark:border-dark-border bg-gradient-to-b from-gray-100 to-gray-300 dark:from-gray-800 dark:to-gray-900 relative overflow-hidden flex items-center justify-center cursor-move touch-none">',
+            '      <div id="g3d-player" class="absolute inset-0 w-full h-full flex items-center justify-center overflow-hidden" style="perspective:1000px"></div>',
+            '      <div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-md opacity-70 pointer-events-none"><i class="fa-solid fa-hand-pointer mr-2"></i> Drag to rotate cube</div>',
+            '    </div>',
+            '    <div class="w-full lg:w-[400px] flex-shrink-0 bg-light-surface dark:bg-dark-surface p-6 flex flex-col gap-8 overflow-y-auto z-10 shadow-[-10px_0_15px_-3px_rgba(0,0,0,0.1)]">',
+            '      <div>',
+            '        <div class="text-sm font-bold text-light-muted dark:text-dark-muted uppercase tracking-widest mb-3">Algorithm</div>',
+            '        <div class="text-base font-mono break-all font-semibold p-4 bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg shadow-inner" id="g3d-seq"></div>',
+            '      </div>',
+            '      <div class="grid grid-cols-5 gap-3">',
+            '        <button type="button" class="col-span-5 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-md transition flex justify-center items-center gap-2 text-lg active:scale-[0.98]" id="g3d-play"><i class="fa-solid fa-play"></i> Play</button>',
+            '        <button type="button" class="py-3 border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover rounded-lg font-bold transition flex justify-center items-center shadow-sm bg-light-surface dark:bg-dark-surface col-span-1 active:scale-95" title="Reset" id="g3d-reset"><i class="fa-solid fa-rotate-left"></i></button>',
+            '        <button type="button" class="py-3 border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover rounded-lg font-bold transition flex justify-center items-center shadow-sm bg-light-surface dark:bg-dark-surface col-span-1 active:scale-95" title="Back" id="g3d-back"><i class="fa-solid fa-backward-step"></i></button>',
+            '        <button type="button" class="py-3 border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover rounded-lg font-bold transition flex justify-center items-center shadow-sm bg-light-surface dark:bg-dark-surface col-span-3 active:scale-95" title="Forward" id="g3d-fwd"><i class="fa-solid fa-forward-step mr-2"></i> Next</button>',
+            '      </div>',
+            '      <div class="bg-light-bg dark:bg-dark-bg p-4 rounded-lg border border-light-border dark:border-dark-border">',
+            '        <div class="flex justify-between items-center mb-3">',
+            '          <label class="text-sm font-bold text-light-muted dark:text-dark-muted uppercase tracking-widest">Speed</label>',
+            '          <span class="text-xs font-mono bg-light-surface dark:bg-dark-surface px-2 py-1 rounded" id="g3d-speed-display">300ms</span>',
+            '        </div>',
+            '        <input type="range" min="50" max="1200" step="50" value="300" class="w-full cursor-pointer accent-blue-500" id="g3d-speed">',
+            '      </div>',
+            '      <div class="flex items-center justify-between p-3 bg-light-bg dark:bg-dark-bg rounded-lg border border-light-border dark:border-dark-border">',
+            '        <span class="text-sm font-medium">括号暂停</span>',
+            '        <div class="flex items-center gap-2">',
+            '          <span class="text-xs font-mono text-light-muted dark:text-dark-muted" id="g3d-bracket-mode">ON</span>',
+            '          <button id="g3d-bracket-pause" class="relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none" style="background-color:#3b82f6">',
+            '            <span id="g3d-bracket-thumb" class="absolute top-0.5 w-5 h-5 bg-white rounded-full shadow transition-all duration-200" style="left: 22px;"></span>',
+            '          </button>',
+            '        </div>',
+            '      </div>',
+            '      <div class="mt-auto pt-6 border-t border-light-border dark:border-dark-border">',
+            '        <div class="flex flex-wrap gap-1 max-h-[90px] overflow-y-auto p-2 bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg shadow-inner font-mono text-sm" id="g3d-progress-tags"></div>',
+            '        <div class="mt-2 text-sm font-bold text-center font-mono tracking-widest" id="g3d-progress-text">0 / 0</div>',
+            '      </div>',
+            '    </div>',
+            '  </div>',
+            '</div>'
+        ].join('\n');
+        document.body.appendChild(_panel);
+
+        _player = _panel.querySelector('#g3d-player');
+        _titleEl = _panel.querySelector('#g3d-title');
+        _seqEl = _panel.querySelector('#g3d-seq');
+        _tagsEl = _panel.querySelector('#g3d-progress-tags');
+        _progEl = _panel.querySelector('#g3d-progress-text');
+        _speedIn = _panel.querySelector('#g3d-speed');
+        _speedDisp = _panel.querySelector('#g3d-speed-display');
+        _closeBtn = _panel.querySelector('#g3d-close');
+        _playBtn = _panel.querySelector('#g3d-play');
+        _resetBtn = _panel.querySelector('#g3d-reset');
+        _backBtn = _panel.querySelector('#g3d-back');
+        _fwdBtn = _panel.querySelector('#g3d-fwd');
+        _bracketToggle = _panel.querySelector('#g3d-bracket-pause');
+        _bracketThumb = _panel.querySelector('#g3d-bracket-thumb');
+
+        _closeBtn.addEventListener('click', close);
+        _playBtn.addEventListener('click', () => {
+            if (!_moves.length) return;
+            if (!_ui) { _renderAt(_curIdx); return; }
+            if (_ui.isPaused) { _ui.resume(); _updatePlayBtn(); return; }
+            if (_ui.isPlaying) { _ui.pause(); _updatePlayBtn(); return; }
+            if (_curIdx >= _moves.length) { _renderAt(0); return; }
+            _playOffset = _curIdx;
+            _ui.playSequence(_moves.slice(_curIdx).join(' '));
+            _updatePlayBtn();
+        });
+        _resetBtn.addEventListener('click', () => _stopAndRender(0));
+        _backBtn.addEventListener('click', () => _stopAndRender(_curIdx - 1));
+        _fwdBtn.addEventListener('click', () => _stopAndRender(_curIdx + 1));
+        _speedIn.addEventListener('input', (e) => {
+            const s = Number(e.target.value || 300);
+            if (_ui) _ui.animationDuration = s;
+            _speedDisp.textContent = `${s}ms`;
+        });
+        _bracketToggle.addEventListener('click', () => {
+            _bracketPause = !_bracketPause;
+            _updateBracketToggleUI();
+            if (_ui) _ui.stop();
+            _buildMoves();
+            _curIdx = 0;
+            _renderAt(0);
+        });
+    }
+
+    function _renderProgressTags() {
+        if (!_tagsEl) return;
+        _tagsEl.innerHTML = '';
+        _moves.forEach((move, i) => {
+            const span = document.createElement('span');
+            span.textContent = move;
+            if (move === '(' || move === ')') {
+                span.className = 'bracket-tag';
+            } else {
+                span.className = 'move-tag';
+                span.dataset.idx = i;
+                if (i < _curIdx) span.classList.add('played');
+                else if (i === _curIdx) span.classList.add('current');
+            }
+            _tagsEl.appendChild(span);
+        });
+    }
+
+    function _updateProg() {
+        const done = _moves.slice(0, _curIdx).filter(m => m !== '(' && m !== ')').length;
+        const total = _moves.filter(m => m !== '(' && m !== ')').length;
+        _progEl.textContent = `${done} / ${total}`;
+        if (!_tagsEl) return;
+        _tagsEl.querySelectorAll('.move-tag').forEach(span => {
+            const idx = parseInt(span.dataset.idx);
+            span.classList.remove('played', 'current');
+            if (idx < _curIdx) span.classList.add('played');
+            else if (idx === _curIdx) span.classList.add('current');
+        });
+    }
+
+    function _renderAt(idx) {
+        _destroyUI();
+        _player.innerHTML = '';
+        _curIdx = Math.max(0, Math.min(idx, _moves.length));
+        if (!_moves.length) return;
+        _ui = new Cube3DUI('g3d-player', _size);
+        _ui.animationDuration = Number(_speedIn.value || 300);
+        _moves.slice(0, _curIdx).forEach(m => {
+            if (m === '(' || m === ')') return;
+            _ui.cube.applyMove(m);
+        });
+        _ui.updateDOMTransforms();
+        _playOffset = _curIdx;
+        _ui.onProgress = (i) => {
+            _curIdx = _playOffset + i;
+            _updateProg();
+            _updatePlayBtn();
+        };
+        _updateProg();
+        _renderProgressTags();
+        _updatePlayBtn();
+    }
+
+    function _destroyUI() { if (_ui && typeof _ui.destroy === 'function') _ui.destroy(); _ui = null; }
+    function _stopAndRender(n) { if (_ui) _ui.stop(); _renderAt(n); }
+
+    function _buildMoves() {
+        _moves = buildMoveList(_algorithm, _size);
+        if (!_bracketPause) {
+            _moves = _moves.filter(m => m !== '(' && m !== ')');
+        }
+    }
+    function _updateBracketToggleUI() {
+        const on = _bracketPause;
+        _bracketToggle.style.backgroundColor = on ? '#3b82f6' : '#9ca3af';
+        _bracketThumb.style.left = on ? '22px' : '2px';
+        const modeEl = _panel.querySelector('#g3d-bracket-mode');
+        if (modeEl) modeEl.textContent = on ? 'ON' : 'OFF';
+    }
+
+    function open(caseName, puzzleSize, algorithm) {
+        _initDOM();
+        _caseName = caseName;
+        _puzzleSize = puzzleSize;
+        _algorithm = algorithm;
+        _titleEl.textContent = caseName;
+        _seqEl.textContent = algorithm.replace(/\(/g, ' ( ').replace(/\)/g, ' ) ').replace(/\s+/g, ' ').trim();
+        _size = puzzleSize;
+        _updateBracketToggleUI();
+        _buildMoves();
+        _curIdx = 0;
+        _panel.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+        _renderAt(0);
+    }
+
+    function close() {
+        if (_ui) _ui.stop();
+        _destroyUI();
+        _panel.classList.add('hidden');
+        document.body.style.overflow = '';
+    }
+
+    return { open, close };
+})();
 
 export function initExplore(container, db, progress) {
     if (!db) {
@@ -288,7 +509,13 @@ function renderExploreContent(container, db, progress) {
                 <div class="text-sm text-light-muted dark:text-dark-muted">${exploreState.puzzle} / ${exploreState.category}</div>
                 <div class="text-xl font-bold">${exploreState.category} Cases</div>
             </div>
-            <div class="text-sm text-light-muted dark:text-dark-muted">${cases.length} / ${allCases.length} cases</div>
+            <div class="flex items-center gap-4">
+                <button id="show-arrows-toggle" class="flex items-center gap-2 text-sm px-3 py-1.5 rounded-lg border transition ${exploreState.showArrows ? 'bg-blue-100 dark:bg-blue-900 border-blue-300 dark:border-blue-700 text-blue-700 dark:text-blue-300' : 'bg-light-surface dark:bg-dark-surface border-light-border dark:border-dark-border text-light-muted dark:text-dark-muted'}">
+                    <i class="fa-solid ${exploreState.showArrows ? 'fa-eye' : 'fa-eye-slash'}"></i>
+                    跑位图
+                </button>
+                <div class="text-sm text-light-muted dark:text-dark-muted">${cases.length} / ${allCases.length} cases</div>
+            </div>
         </div>
         <div class="mb-4">
             <input
@@ -309,7 +536,7 @@ function renderExploreContent(container, db, progress) {
         const mainAlg = userProg.main_alg || caseData.algorithms[0].alg;
         const card = createCaseCard(exploreState.puzzle, exploreState.category, caseData, mainAlg);
         grid.appendChild(card);
-        render2D(card, caseData, exploreState.puzzle, mainAlg);
+        render2D(card, caseData, exploreState.puzzle, mainAlg, exploreState.showArrows);
     });
 
     const searchInput = content.querySelector('#explore-search');
@@ -327,6 +554,14 @@ function renderExploreContent(container, db, progress) {
         });
     }
 
+    const arrowsToggle = content.querySelector('#show-arrows-toggle');
+    if (arrowsToggle) {
+        arrowsToggle.addEventListener('click', () => {
+            exploreState.showArrows = !exploreState.showArrows;
+            renderExploreContent(container, db, progress);
+        });
+    }
+
     const backToCategories = content.querySelector('#back-to-categories');
     if (backToCategories) {
         backToCategories.addEventListener('click', () => {
@@ -339,9 +574,6 @@ function renderExploreContent(container, db, progress) {
 }
 
 function createCaseCard(cat, sub, caseData, mainAlg) {
-    const safeKey = `${cat}-${sub}-${caseData.name}`.replace(/[^a-zA-Z0-9_-]/g, '-');
-    const playerId = `cube3d-${safeKey}`;
-    const panelId = `panel-${safeKey}`;
     const div = document.createElement('div');
     div.className = "case-card bg-light-surface dark:bg-dark-surface flex flex-col border border-light-border dark:border-dark-border rounded-lg relative";
     div.innerHTML = `
@@ -355,15 +587,15 @@ function createCaseCard(cat, sub, caseData, mainAlg) {
                         <h3 class="font-bold text-lg">${caseData.name}</h3>
                         ${caseData.subgroup ? `<span class="text-xs font-medium px-2 py-1 border border-light-border dark:border-dark-border rounded">${caseData.subgroup}</span>` : ''}
                     </div>
-                    <p class="text-xs text-light-muted dark:text-dark-muted mt-1 ">Scramble: <code class="bg-light-hover dark:bg-dark-hover px-1 scramble-text" data-alg="${mainAlg}">Calculating...</code></p>
+                    <p class="text-xs text-light-muted dark:text-dark-muted mt-1">Scramble: <code class="bg-light-hover dark:bg-dark-hover px-1 scramble-text" data-alg="${mainAlg}">Calculating...</code></p>
                     
                     <div class="mt-3 space-y-2">
                         ${caseData.algorithms.map((a, idx) => `
-                                                <div data-alg-row="${idx}" data-alg="${a.alg}" class="text-sm p-2 bg-light-hover dark:bg-dark-hover border ${a.alg === mainAlg ? 'border-2 border-yellow-400 dark:border-yellow-500' : 'border border-transparent hover:border-black dark:hover:border-dark-border'} transition cursor-pointer flex justify-between items-center group">
+                            <div data-alg-row="${idx}" data-alg="${a.alg}" class="text-sm p-2 bg-light-hover dark:bg-dark-hover border ${a.alg === mainAlg ? 'border-2 border-yellow-400 dark:border-yellow-500' : 'border border-transparent hover:border-black dark:hover:border-dark-border'} transition cursor-pointer flex justify-between items-center group">
                                 <span class="font-mono text-xs break-all mr-2">${a.alg}</span>
                                 <div class="flex space-x-1 opacity-0 group-hover:opacity-100 transition">
-                                                        <button class="p-1 hover:text-yellow-500" title="Set as Main" data-action="main" data-alg="${a.alg}"><i class="fa-solid fa-star text-light-muted dark:text-dark-muted ${a.alg === mainAlg ? 'text-yellow-500' : ''}"></i></button>
-                                                        <button class="p-1 hover:text-black dark:hover:text-white" title="Add to Set" data-action="add" data-alg="${a.alg}"><i class="fa-solid fa-plus text-light-muted dark:text-dark-muted"></i></button>
+                                    <button class="p-1 hover:text-yellow-500" title="Set as Main" data-action="main" data-alg="${a.alg}"><i class="fa-solid fa-star text-light-muted dark:text-dark-muted ${a.alg === mainAlg ? 'text-yellow-500' : ''}"></i></button>
+                                    <button class="p-1 hover:text-black dark:hover:text-white" title="Add to Set" data-action="add" data-alg="${a.alg}"><i class="fa-solid fa-plus text-light-muted dark:text-dark-muted"></i></button>
                                 </div>
                             </div>
                         `).join('')}
@@ -372,209 +604,69 @@ function createCaseCard(cat, sub, caseData, mainAlg) {
             </div>
         </div>
         <div class="bg-light-hover dark:bg-dark-hover px-4 py-2 border-t border-light-border dark:border-dark-border flex justify-between items-center mt-auto">
-                                 <button class="text-light-text dark:text-dark-text text-sm font-medium hover:underline" data-open-3d="main">
+            <button class="text-light-text dark:text-dark-text text-sm font-medium hover:underline" data-open-3d>
                 <i class="fa-solid fa-video mr-1 text-light-muted dark:text-dark-muted"></i> 3D View
-             </button>
-                                 <button class="flex items-center text-sm text-light-muted dark:text-dark-muted hover:text-green-500 ">
+            </button>
+            <button class="flex items-center text-sm text-light-muted dark:text-dark-muted hover:text-green-500">
                 <i class="fa-regular fa-circle-check mr-1"></i> <span>Learned</span>
-             </button>
+            </button>
         </div>
-                            <div id="${panelId}" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 hidden backdrop-blur-sm" style="position: fixed !important;">
-                    <div class="bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border shadow-2xl w-[95vw] max-w-5xl h-[85vh] flex flex-col rounded-xl overflow-hidden relative">
-                        <div class="px-5 py-4 border-b border-light-border dark:border-dark-border flex items-center justify-between bg-light-menu dark:bg-dark-surface shrink-0">
-                            <div class="font-bold text-lg"><i class="fa-solid fa-cube mr-2"></i>${caseData.name} - 3D View</div>
-                            <button type="button" class="w-8 h-8 flex items-center justify-center rounded-full text-light-muted dark:text-dark-muted hover:bg-light-hover dark:hover:bg-dark-hover hover:text-black dark:hover:text-white transition" data-3d-close>
-                                <i class="fa-solid fa-xmark fa-lg"></i>
-                            </button>
-                        </div>
-                        <div class="flex-1 flex flex-col lg:flex-row overflow-hidden relative">
-                            <!-- Left: 3D Canvas Area -->
-                            <div class="flex-1 h-[50vh] lg:h-full border-b lg:border-b-0 lg:border-r border-light-border dark:border-dark-border bg-light-bg dark:bg-dark-bg relative overflow-hidden">
-                                <div id="${playerId}" class="absolute inset-0 w-full h-full"></div>
-                            </div>
-                            
-                            <!-- Right: Controls Sidebar -->
-                            <div class="w-full lg:w-80 flex-shrink-0 bg-light-surface dark:bg-dark-surface p-5 flex flex-col gap-6 overflow-y-auto z-10">
-                                <div>
-                                    <div class="text-xs font-bold text-light-muted dark:text-dark-muted uppercase tracking-wider mb-2">Algorithm</div>
-                                    <div class="text-sm font-mono break-all font-semibold p-3 bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border rounded" data-3d-sequence>${mainAlg}</div>
-                                </div>
-                                
-                                <div class="grid grid-cols-5 gap-2">
-                                    <button type="button" class="col-span-5 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded font-bold shadow transition flex justify-center items-center gap-2" data-3d-play><i class="fa-solid fa-play"></i> Play</button>
-                                    <button type="button" class="py-2 border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover rounded font-bold transition flex justify-center items-center shadow-sm bg-light-surface dark:bg-dark-surface col-span-1" title="Pause" data-3d-pause><i class="fa-solid fa-pause"></i></button>
-                                    <button type="button" class="py-2 border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover rounded font-bold transition flex justify-center items-center shadow-sm bg-light-surface dark:bg-dark-surface col-span-1" title="Reset" data-3d-reset><i class="fa-solid fa-rotate-left"></i></button>
-                                    <button type="button" class="py-2 border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover rounded font-bold transition flex justify-center items-center shadow-sm bg-light-surface dark:bg-dark-surface col-span-1" title="Back" data-3d-back><i class="fa-solid fa-backward-step"></i></button>
-                                    <button type="button" class="py-2 border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover rounded font-bold transition flex justify-center items-center shadow-sm bg-light-surface dark:bg-dark-surface col-span-2" title="Forward" data-3d-forward><i class="fa-solid fa-forward-step mr-2"></i> Next</button>
-                                </div>
-
-                                <div>
-                                    <label class="block text-xs font-bold text-light-muted dark:text-dark-muted uppercase tracking-wider mb-2">Playback Speed</label>
-                                    <input type="range" min="50" max="1200" step="50" value="300" class="w-full cursor-pointer accent-blue-500" data-3d-speed>
-                                </div>
-                                
-                                <div class="mt-auto pt-4 border-t border-light-border dark:border-dark-border">
-                                    <div class="text-sm font-bold text-center bg-light-surface dark:bg-dark-surface border border-light-border dark:border-dark-border py-2 rounded-full" data-3d-progress>0 / 0 moves</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
     `;
 
-                        const state = {
-                            ui: null,
-                            moves: buildMoveList(mainAlg, getCubeSizeFromPuzzle(cat)),
-                            currentIndex: 0,
-                            activeAlg: mainAlg,
-                            size: getCubeSizeFromPuzzle(cat),
-                            playerId,
-                            panelId
-                        };
-
-                        bind3DPlayer(div, state, caseData.name);
-
+    const state = { activeAlg: mainAlg, size: getCubeSizeFromPuzzle(cat) };
+    bind3DPlayer(div, state, caseData.name);
     return div;
 }
 
-function render2D(card, caseData, puzzleKey, mainAlg) {
+function render2D(card, caseData, puzzleKey, mainAlg, showArrows) {
     const containerId = `cube2d-${caseData.name.replace(/\s+/g, '-')}`;
     const cubeSize = getCubeSizeFromPuzzle(puzzleKey);
     
-    // Generate Scramble: Inverse of the algorithm
-    const scramble = invertSeq(mainAlg);
+    // Expand first so invertSeq handles parens as separate tokens
+    const expanded = expandAlg(mainAlg);
+    const scramble = invertSeq(expanded);
     
     // Update scramble text in UI
     const code = card.querySelector('.scramble-text');
     code.textContent = scramble;
 
     const cube = new Cube(cubeSize);
-    // Apply scramble
-    scramble.split(/\s+/).forEach(move => cube.applyMove(move));
+    scramble.split(/\s+/).forEach(move => {
+        if (move === '(' || move === ')') return;
+        cube.applyMove(move);
+    });
     
     const ui = new Cube2DUI(containerId, cube);
+    if (showArrows) ui.showArrows = true;
     ui.render();
 }
 
 function buildMoveList(alg, size) {
     const validator = new Cube(size || 3);
     const expanded = expandAlg(alg);
-    return expanded.trim().split(/\s+/).filter(move => move && validator.parseMove(move) !== null);
+    return expanded.trim().split(/\s+/).filter(move => {
+        if (!move) return false;
+        if (move === '(' || move === ')') return true;
+        return validator.parseMove(move) !== null;
+    });
 }
 
 function bind3DPlayer(card, state, caseTitle) {
-    const panel = card.querySelector(`#${state.panelId}`);
-    const viewer = card.querySelector(`#${state.playerId}`);
-    const sequenceLabel = card.querySelector('[data-3d-sequence]');
-    const progressLabel = card.querySelector('[data-3d-progress]');
-    const speedInput = card.querySelector('[data-3d-speed]');
-    const openButton = card.querySelector('[data-open-3d]');
-    const playButton = card.querySelector('[data-3d-play]');
-    const pauseButton = card.querySelector('[data-3d-pause]');
-    const backButton = card.querySelector('[data-3d-back]');
-    const forwardButton = card.querySelector('[data-3d-forward]');
-    const resetButton = card.querySelector('[data-3d-reset]');
-    const closeButton = card.querySelector('[data-3d-close]');
+    const size = state.size;
+    const defaultAlg = state.activeAlg;
 
-    const updateProgress = () => {
-        if (progressLabel) {
-            progressLabel.textContent = `${state.currentIndex} / ${state.moves.length}`;
-        }
-    };
-
-    const destroyUI = () => {
-        if (state.ui && typeof state.ui.destroy === 'function') {
-            state.ui.destroy();
-        }
-        state.ui = null;
-    };
-
-    const renderAtIndex = (index) => {
-        destroyUI();
-        viewer.innerHTML = '';
-        state.currentIndex = Math.max(0, Math.min(index, state.moves.length));
-        state.ui = new Cube3DUI(state.playerId, state.size);
-        state.ui.animationDuration = Number(speedInput?.value || 300);
-        for (const move of state.moves.slice(0, state.currentIndex)) {
-            state.ui.cube.applyMove(move);
-        }
-        state.ui.updateDOMTransforms();
-        state.ui.onMoveFinished = () => {
-            state.currentIndex = Math.min(state.currentIndex + 1, state.moves.length);
-            updateProgress();
-        };
-        updateProgress();
-    };
-
-    const openPanel = (alg) => {
-        state.activeAlg = alg;
-        state.moves = buildMoveList(alg, state.size);
-        sequenceLabel.textContent = alg;
-        panel.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        renderAtIndex(0);
-    };
-
-    const stopAndRender = (nextIndex) => {
-        if (state.ui) state.ui.stop();
-        renderAtIndex(nextIndex);
-    };
-
-    openButton?.addEventListener('click', () => openPanel(state.activeAlg));
+    card.querySelector('[data-open-3d]')?.addEventListener('click', () => {
+        _3dModal.open(caseTitle, size, defaultAlg);
+    });
 
     card.querySelectorAll('[data-alg-row]').forEach(row => {
         row.addEventListener('click', (e) => {
             if (e.target.closest('button')) return;
-            const alg = row.dataset.alg;
-            openPanel(alg);
+            _3dModal.open(caseTitle, size, row.dataset.alg);
         });
     });
 
     card.querySelectorAll('[data-action]').forEach(button => {
         button.addEventListener('click', (e) => e.stopPropagation());
-    });
-
-    playButton?.addEventListener('click', () => {
-        if (!panel || panel.classList.contains('hidden')) {
-            openPanel(state.activeAlg);
-        }
-        if (!state.ui) renderAtIndex(state.currentIndex);
-        if (state.ui.isPaused) {
-            state.ui.resume();
-            return;
-        }
-        if (state.currentIndex >= state.moves.length) {
-            renderAtIndex(0);
-        }
-        const remaining = state.moves.slice(state.currentIndex);
-        if (!remaining.length) return;
-        state.ui.playSequence(remaining.join(' '));
-    });
-
-    pauseButton?.addEventListener('click', () => {
-        if (state.ui) state.ui.pause();
-    });
-
-    backButton?.addEventListener('click', () => {
-        stopAndRender(state.currentIndex - 1);
-    });
-
-    forwardButton?.addEventListener('click', () => {
-        stopAndRender(state.currentIndex + 1);
-    });
-
-    resetButton?.addEventListener('click', () => {
-        stopAndRender(0);
-    });
-
-    speedInput?.addEventListener('input', (e) => {
-        const speed = Number(e.target.value || 300);
-        if (state.ui) state.ui.animationDuration = speed;
-    });
-
-    closeButton?.addEventListener('click', () => {
-        if (state.ui) state.ui.stop();
-        panel.classList.add('hidden');
-        document.body.style.overflow = '';
     });
 }
