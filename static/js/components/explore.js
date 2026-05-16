@@ -17,7 +17,7 @@ const _3dModal = (() => {
     let _init = false, _panel, _player, _titleEl, _seqEl, _progEl, _tagsEl;
     let _speedIn, _speedDisp;
     let _playBtn, _backBtn, _fwdBtn, _resetBtn, _closeBtn, _bracketToggle, _bracketThumb;
-    let _ui = null, _moves = [], _curIdx = 0, _size = 3, _playOffset = 0, _bracketPause = true, _algorithm = '', _caseName = '', _puzzleSize = 3;
+    let _ui = null, _moves = [], _scramble = [], _curIdx = 0, _size = 3, _playOffset = 0, _bracketPause = true, _algorithm = '', _caseName = '', _puzzleSize = 3;
 
     function _updatePlayBtn() {
         if (!_playBtn) return;
@@ -58,6 +58,9 @@ const _3dModal = (() => {
             '      <div>',
             '        <div class="text-sm font-bold text-light-muted dark:text-dark-muted uppercase tracking-widest mb-3">Algorithm</div>',
             '        <div class="text-base font-mono break-all font-semibold p-4 bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border rounded-lg shadow-inner" id="g3d-seq"></div>',
+            '        <button id="g3d-copy-playground" class="mt-2 w-full py-2 border border-light-border dark:border-dark-border hover:bg-light-hover dark:hover:bg-dark-hover rounded-lg text-sm font-medium transition flex items-center justify-center gap-2 active:scale-[0.98]">',
+            '          <i class="fa-solid fa-cube text-blue-500"></i> 复制打乱到 Playground',
+            '        </button>',
             '      </div>',
             '      <div class="grid grid-cols-5 gap-3">',
             '        <button type="button" class="col-span-5 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold shadow-md transition flex justify-center items-center gap-2 text-lg active:scale-[0.98]" id="g3d-play"><i class="fa-solid fa-play"></i> Play</button>',
@@ -133,6 +136,23 @@ const _3dModal = (() => {
             _curIdx = 0;
             _renderAt(0);
         });
+
+        const copyBtn = _panel.querySelector('#g3d-copy-playground');
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                _3dModal.close();
+                try {
+                    localStorage.setItem('cubase_playground_import', JSON.stringify({
+                        alg: _algorithm,
+                        size: _puzzleSize,
+                        caseName: _caseName
+                    }));
+                } catch (e) {
+                    console.error('Failed to save import data', e);
+                }
+                window.location.hash = '#playground';
+            });
+        }
     }
 
     function _renderProgressTags() {
@@ -173,6 +193,11 @@ const _3dModal = (() => {
         if (!_moves.length) return;
         _ui = new Cube3DUI('g3d-player', _size);
         _ui.animationDuration = Number(_speedIn.value || 300);
+        // Apply scramble first so the cube starts in solved → scrambled state
+        _scramble.forEach(m => {
+            if (m === '(' || m === ')') return;
+            _ui.cube.applyMove(m);
+        });
         _moves.slice(0, _curIdx).forEach(m => {
             if (m === '(' || m === ')') return;
             _ui.cube.applyMove(m);
@@ -197,6 +222,14 @@ const _3dModal = (() => {
         if (!_bracketPause) {
             _moves = _moves.filter(m => m !== '(' && m !== ')');
         }
+        // Build scramble = inverse of the algorithm (parens filtered, only actual moves)
+        const expanded = expandAlg(_algorithm);
+        const inverted = invertSeq(expanded);
+        _scramble = inverted.trim().split(/\s+/).filter(m => {
+            if (!m) return false;
+            if (m === '(' || m === ')') return false;
+            return true;
+        });
     }
     function _updateBracketToggleUI() {
         const on = _bracketPause;
@@ -655,7 +688,8 @@ function bind3DPlayer(card, state, caseTitle) {
     const size = state.size;
     const defaultAlg = state.activeAlg;
 
-    card.querySelector('[data-open-3d]')?.addEventListener('click', () => {
+    const _3dBtn = card.querySelector('[data-open-3d]');
+    if (_3dBtn) _3dBtn.addEventListener('click', () => {
         _3dModal.open(caseTitle, size, defaultAlg);
     });
 

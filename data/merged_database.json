@@ -932,38 +932,23 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R U' F U' R' U' R U F' U2' R'",
-              "note": ""
-            },
+            "alg": "R U' F U' R' U' R U F' U2' R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R U R' F' R U R' U' R' F R2 U' R'",
-              "note": ""
-            },
+            "alg": "R U R' F' R U R' U' R' F R2 U' R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R U2 R' U' R U2 L' U R' U' L ",
-              "note": ""
-            },
+            "alg": "R U2 R' U' R U2 L' U R' U' L",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R' U2' R U R' U2' L U' R U L'",
-              "note": ""
-            },
+            "alg": "R' U2' R U R' U2' L U' R U L'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "r' U2' R U R' U' U' z U R' D R u' z'",
-              "note": ""
-            },
+            "alg": "r' U2' R U R' U' U' z U R' D R u' z'",
             "source": "cubingapp"
           }
         ]
@@ -973,38 +958,23 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R' U R U' R' f' U' R U2 R' U' R U' R' f R",
-              "note": ""
-            },
+            "alg": "R' U R U' R' f' U' R U2 R' U' R U' R' f R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "F R U' R' U' R U R' F' R U R' U' R' F R F'",
-              "note": ""
-            },
+            "alg": "F R U' R' U' R U R' F' R U R' U' R' F R F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R U2' R' U2 F' R U' R' F R' F' R F",
-              "note": ""
-            },
+            "alg": "R U2' R' U2 F' R U' R' F R' F' R F",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "x U' R' U R U' x' R U R' F U2' R U2 R'",
-              "note": ""
-            },
+            "alg": "x U' R' U R U' x' R U R' F U2' R U2 R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R' U R U' x' U R U2 R' U' R U' R' U2 R U R' U' x",
-              "note": ""
-            },
+            "alg": "R' U R U' x' U R U2 R' U' R U' R' U2 R U R' U' x",
             "source": "cubingapp"
           }
         ]
@@ -1014,31 +984,19 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U R' U' R U' R' U R U' R' U2 R",
-              "note": ""
-            },
+            "alg": "U R' U' R U' R' U R U' R' U2 R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R' U2' R U R' U' R U R' U R",
-              "note": ""
-            },
+            "alg": "R' U2' R U R' U' R U R' U R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U R U R' U R U' R' U R U2' R'",
-              "note": ""
-            },
+            "alg": "U R U R' U R U' R' U R U2' R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "r' U2' R U' R' U' R U R' U r",
-              "note": ""
-            },
+            "alg": "r' U2' R U' R' U' R U R' U r",
             "source": "cubingapp"
           }
         ]
@@ -1048,10 +1006,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "F R U R' U' R U R' U' R U R' U' F'",
-              "note": ""
-            },
+            "alg": "F R U R' U' R U R' U' R U R' U' F'",
             "source": "cubingapp"
           }
         ]
@@ -1061,17 +1016,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' F R U R' U' R U' R' U R U R' F'",
-              "note": ""
-            },
+            "alg": "U' F R U R' U' R U' R' U R U R' F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U F R U' R' U R U2 R' U' R U R' U' F'",
-              "note": ""
-            },
+            "alg": "U F R U' R' U R U2 R' U' R U R' U' F'",
             "source": "cubingapp"
           }
         ]
@@ -1081,31 +1030,19 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' R U R' U R U r' F R' F' r",
-              "note": ""
-            },
+            "alg": "U' R U R' U R U r' F R' F' r",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' R' U' R U' R' U' z U R' D R U' z'",
-              "note": ""
-            },
+            "alg": "U' R' U' R U' R' U' z U R' D R U' z'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' R U R' U R U L' U R' U' L",
-              "note": ""
-            },
+            "alg": "U' R U R' U R U L' U R' U' L",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' R' U' R U' R' U' z U z' U' R U L'",
-              "note": ""
-            },
+            "alg": "U' R' U' R U' R' U' z U z' U' R U L'",
             "source": "cubingapp"
           }
         ]
@@ -1115,24 +1052,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "F R U R' U' R U R' U' F'",
-              "note": ""
-            },
+            "alg": "F R U R' U' R U R' U' F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U2 F U R U' R' U R U' R' F'",
-              "note": ""
-            },
+            "alg": "U2 F U R U' R' U R U' R' F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R U2 R2 U' R2 U' R2 U2 R",
-              "note": ""
-            },
+            "alg": "R U2 R2 U' R2 U' R2 U2 R",
             "source": "cubingapp"
           }
         ]
@@ -1142,24 +1070,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R' U2' R U R' U' R U2 R f' U' f",
-              "note": ""
-            },
+            "alg": "R' U2' R U R' U' R U2 R f' U' f",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U F R' F' R U2 R U' R' U R U2 R'",
-              "note": ""
-            },
+            "alg": "U F R' F' R U2 R U' R' U R U2 R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U F U R U' R2 F' R U2 R U2 R'",
-              "note": ""
-            },
+            "alg": "U F U R U' R2 F' R U2 R U2 R'",
             "source": "cubingapp"
           }
         ]
@@ -1169,17 +1088,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' F R U' R' U' R U R' U R U' R' F'",
-              "note": ""
-            },
+            "alg": "U' F R U' R' U' R U R' U R U' R' F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U F U R U' R' U R U2' R' U' R U R' F'",
-              "note": ""
-            },
+            "alg": "U F U R U' R' U R U2' R' U' R U R' F'",
             "source": "cubingapp"
           }
         ]
@@ -1189,17 +1102,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R U2 R' U' R U R' U2 R' F R F'",
-              "note": ""
-            },
+            "alg": "R U2 R' U' R U R' U2 R' F R F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R U2 R' U2 R' F R2 U R' U' F'",
-              "note": ""
-            },
+            "alg": "R U2 R' U2 R' F R2 U R' U' F'",
             "source": "cubingapp"
           }
         ]
@@ -1209,24 +1116,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U2 R' F R F' r U' R' U' R U' r'",
-              "note": ""
-            },
+            "alg": "U2 R' F R F' r U' R' U' R U' r'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U2 R' F R F' r U' r' U' R U' R'",
-              "note": ""
-            },
+            "alg": "U2 R' F R F' r U' r' U' R U' R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U2 r' F R F' r U' R' U' R U' R'",
-              "note": ""
-            },
+            "alg": "U2 r' F R F' r U' R' U' R U' R'",
             "source": "cubingapp"
           }
         ]
@@ -1236,17 +1134,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U2 R' U' R U' R' U F' U F R",
-              "note": ""
-            },
+            "alg": "U2 R' U' R U' R' U F' U F R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' R' U' R' F R F' R U' R' U2' R",
-              "note": ""
-            },
+            "alg": "U' R' U' R' F R F' R U' R' U2' R",
             "source": "cubingapp"
           }
         ]
@@ -1256,17 +1148,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R' U2' R U2 F U' R' U R U F'",
-              "note": ""
-            },
+            "alg": "R' U2' R U2 F U' R' U R U F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "r U' r' U' r U' r' U' F' U2 F",
-              "note": ""
-            },
+            "alg": "r U' r' U' r U' r' U' F' U2 F",
             "source": "cubingapp"
           }
         ]
@@ -1276,38 +1162,23 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R' U R U2 R U2 R' U' R U' f' U' f",
-              "note": ""
-            },
+            "alg": "R' U R U2 R U2 R' U' R U' f' U' f",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R2 D' R U2 R' D R U2 R",
-              "note": ""
-            },
+            "alg": "R2 D' R U2 R' D R U2 R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "r2 D' R U2 R' D R U2 R",
-              "note": ""
-            },
+            "alg": "r2 D' R U2 R' D R U2 R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "x l2 x D' R U2 R' D R U2 R",
-              "note": ""
-            },
+            "alg": "x l2 x D' R U2 R' D R U2 R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "z U R2' U' R2 F' R U R' U' R' F z'",
-              "note": ""
-            },
+            "alg": "z U R2' U' R2 F' R U R' U' R' F z'",
             "source": "cubingapp"
           }
         ]
@@ -1317,17 +1188,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R' U' R U' R' U2' R2 U R' U R U2' R'",
-              "note": ""
-            },
+            "alg": "R' U' R U' R' U2' R2 U R' U R U2' R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' R' U' R U R' U R U2' R' U R U2' R' U' R",
-              "note": ""
-            },
+            "alg": "U' R' U' R U R' U R U2' R' U R U2' R' U' R",
             "source": "cubingapp"
           }
         ]
@@ -1337,17 +1202,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U2 F R U R' U' R' U R U' F' U R' U' R",
-              "note": ""
-            },
+            "alg": "U2 F R U R' U' R' U R U' F' U R' U' R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U R' U R U' F U R' U' R U R U' R' F'",
-              "note": ""
-            },
+            "alg": "U R' U R U' F U R' U' R U R U' R' F'",
             "source": "cubingapp"
           }
         ]
@@ -1357,17 +1216,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R' U2 R U F U' R' U2 R U F'",
-              "note": ""
-            },
+            "alg": "R' U2 R U F U' R' U2 R U F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "F R U' R' U R U R' U R U' R' F'",
-              "note": ""
-            },
+            "alg": "F R U' R' U R U R' U R U' R' F'",
             "source": "cubingapp"
           }
         ]
@@ -1377,17 +1230,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' F R U R' U' F'",
-              "note": ""
-            },
+            "alg": "U' F R U R' U' F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U F U R U' R' F'",
-              "note": ""
-            },
+            "alg": "U F U R U' R' F'",
             "source": "cubingapp"
           }
         ]
@@ -1397,17 +1244,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' R U R' U' R' F R F'",
-              "note": ""
-            },
+            "alg": "U' R U R' U' R' F R F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' r U R' U' r' F R F'",
-              "note": ""
-            },
+            "alg": "U' r U R' U' r' F R F'",
             "source": "cubingapp"
           }
         ]
@@ -1417,17 +1258,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' F R U' R' U R U R' F'",
-              "note": ""
-            },
+            "alg": "U' F R U' R' U R U R' F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' R' U' R U R f' U' f",
-              "note": ""
-            },
+            "alg": "U' R' U' R U R f' U' f",
             "source": "cubingapp"
           }
         ]
@@ -1437,24 +1272,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R U2 R' U' R U' R2 U2 R U R' U R",
-              "note": ""
-            },
+            "alg": "R U2 R' U' R U' R2 U2 R U R' U R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U2 R' U2 R U R' U R2 U2 R' U' R U' R'",
-              "note": ""
-            },
+            "alg": "U2 R' U2 R U R' U R2 U2 R' U' R U' R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U2 R U' R' U2' R U R' U2' R U R' U R U' R'",
-              "note": ""
-            },
+            "alg": "U2 R U' R' U2' R U R' U2' R U R' U R U' R'",
             "source": "cubingapp"
           }
         ]
@@ -1464,24 +1290,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "r' U r U2 R2 F R F' R",
-              "note": ""
-            },
+            "alg": "r' U r U2 R2 F R F' R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R' U R U2 R' L' U R U' r x'",
-              "note": ""
-            },
+            "alg": "R' U R U2 R' L' U R U' r x'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R' U r U2 R2 F R F' r",
-              "note": ""
-            },
+            "alg": "R' U r U2 R2 F R F' r",
             "source": "cubingapp"
           }
         ]
@@ -1491,10 +1308,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U2 F R U R' U' R U' R' U' R U R' F'",
-              "note": ""
-            },
+            "alg": "U2 F R U R' U' R U' R' U' R U R' F'",
             "source": "cubingapp"
           }
         ]
@@ -1504,17 +1318,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R' U' R U' R' U R U' R' U F' U F R",
-              "note": ""
-            },
+            "alg": "R' U' R U' R' U R U' R' U F' U F R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U2 R' F' U' F U' R U R' U' R U R' U R",
-              "note": ""
-            },
+            "alg": "U2 R' F' U' F U' R U R' U' R U R' U R",
             "source": "cubingapp"
           }
         ]
@@ -1524,17 +1332,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U R U R' U R U2 R'",
-              "note": ""
-            },
+            "alg": "U R U R' U R U2 R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R' U2 R U R' U R",
-              "note": ""
-            },
+            "alg": "R' U2 R U R' U R",
             "source": "cubingapp"
           }
         ]
@@ -1544,17 +1346,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' R' U2' R U2 R f' U' f",
-              "note": ""
-            },
+            "alg": "U' R' U2' R U2 R f' U' f",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U F U R U2' R' U' R U R' F'",
-              "note": ""
-            },
+            "alg": "U F U R U2' R' U' R U R' F'",
             "source": "cubingapp"
           }
         ]
@@ -1564,17 +1360,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U F R' F' R U2 R U2 R'",
-              "note": ""
-            },
+            "alg": "U F R' F' R U2 R U2 R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U M' F R' F' r U2 R U2 R'",
-              "note": ""
-            },
+            "alg": "U M' F R' F' r U2 R U2 R'",
             "source": "cubingapp"
           }
         ]
@@ -1584,24 +1374,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U2 R' U' R U' R' U2 F R F' r U r'",
-              "note": ""
-            },
+            "alg": "U2 R' U' R U' R' U2 F R F' r U r'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "F U' R' U R U F' U2 R f' U' f",
-              "note": ""
-            },
+            "alg": "F U' R' U R U F' U2 R f' U' f",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U R U R' U' R' F R F' R U R' U R U2' R'",
-              "note": ""
-            },
+            "alg": "U R U R' U' R' F R F' R U R' U R U2' R'",
             "source": "cubingapp"
           }
         ]
@@ -1611,10 +1392,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' R U R' U R' F R F' R U2 R'",
-              "note": ""
-            },
+            "alg": "U' R U R' U R' F R F' R U2 R'",
             "source": "cubingapp"
           }
         ]
@@ -1624,17 +1402,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U r U' r' F R' F' R",
-              "note": ""
-            },
+            "alg": "U r U' r' F R' F' R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U R U' r' F R' F' r",
-              "note": ""
-            },
+            "alg": "U R U' r' F R' F' r",
             "source": "cubingapp"
           }
         ]
@@ -1644,24 +1416,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U R' U' R U' R' U2 R",
-              "note": ""
-            },
+            "alg": "U R' U' R U' R' U2 R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U2 R U2 R' U' R U' R'",
-              "note": ""
-            },
+            "alg": "U2 R U2 R' U' R U' R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U r' U' R U' R' U2 r",
-              "note": ""
-            },
+            "alg": "U r' U' R U' R' U2 r",
             "source": "cubingapp"
           }
         ]
@@ -1671,10 +1434,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "r U' r' F R' F' U2' R U R' U R",
-              "note": ""
-            },
+            "alg": "r U' r' F R' F' U2' R U R' U R",
             "source": "cubingapp"
           }
         ]
@@ -1684,17 +1444,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U2 F R U' R' U R U2 R' U' F'",
-              "note": ""
-            },
+            "alg": "U2 F R U' R' U R U2 R' U' F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' F' r U r' U2 r' F2 r",
-              "note": ""
-            },
+            "alg": "U' F' r U r' U2 r' F2 r",
             "source": "cubingapp"
           }
         ]
@@ -1704,10 +1458,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' R U2 R' U2 R' F R F'",
-              "note": ""
-            },
+            "alg": "U' R U2 R' U2 R' F R F'",
             "source": "cubingapp"
           }
         ]
@@ -1717,24 +1468,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' R' F R F' r U r'",
-              "note": ""
-            },
+            "alg": "U' R' F R F' r U r'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' r' F R F' r U R'",
-              "note": ""
-            },
+            "alg": "U' r' F R F' r U R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U R' U z U R' D R U'",
-              "note": ""
-            },
+            "alg": "U R' U z U R' D R U'",
             "source": "cubingapp"
           }
         ]
@@ -1744,17 +1486,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R' U' R U' R' U R' F R F' U R",
-              "note": ""
-            },
+            "alg": "R' U' R U' R' U R' F R F' U R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U R U2 R' F R' F' R U' R U' R'",
-              "note": ""
-            },
+            "alg": "U R U2 R' F R' F' R U' R U' R'",
             "source": "cubingapp"
           }
         ]
@@ -1764,10 +1500,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "F R U' R' U' R U R' F'",
-              "note": ""
-            },
+            "alg": "F R U' R' U' R U R' F'",
             "source": "cubingapp"
           }
         ]
@@ -1777,10 +1510,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "F R' F' R U R U' R'",
-              "note": ""
-            },
+            "alg": "F R' F' R U R U' R'",
             "source": "cubingapp"
           }
         ]
@@ -1790,17 +1520,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U R' U' R U' R' U R U' R' U R U' R' U2' R",
-              "note": ""
-            },
+            "alg": "U R' U' R U' R' U R U' R' U R U' R' U2' R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U2 R U R' U R U' R' U R U' R' U R U2 R'",
-              "note": ""
-            },
+            "alg": "U2 R U R' U R U' R' U R U' R' U R U2 R'",
             "source": "cubingapp"
           }
         ]
@@ -1810,17 +1534,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U F U' R' U' R U F' U2' R' U2 R",
-              "note": ""
-            },
+            "alg": "U F U' R' U' R U F' U2' R' U2 R",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R' U' R U' R' U2' R2 U R' U' R' F R F'",
-              "note": ""
-            },
+            "alg": "R' U' R U' R' U2' R2 U R' U' R' F R F'",
             "source": "cubingapp"
           }
         ]
@@ -1830,24 +1548,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U2 R' U' R U' F U' R' U' R U F'",
-              "note": ""
-            },
+            "alg": "U2 R' U' R U' F U' R' U' R U F'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R U2 R2 F R F' R U2' R'",
-              "note": ""
-            },
+            "alg": "R U2 R2 F R F' R U2' R'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "R U2 r2 F R F' R U2' R'",
-              "note": ""
-            },
+            "alg": "R U2 r2 F R F' R U2' R'",
             "source": "cubingapp"
           }
         ]
@@ -1857,24 +1566,15 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U R' U' R U' R U R' U R U2 f' U' f",
-              "note": ""
-            },
+            "alg": "U R' U' R U' R U R' U R U2 f' U' f",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' R' U2 R' D' R U2 R' D R2",
-              "note": ""
-            },
+            "alg": "U' R' U2 R' D' R U2 R' D R2",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' R' U2 R' D' R U2 R' D r2",
-              "note": ""
-            },
+            "alg": "U' R' U2 R' D' R U2 R' D r2",
             "source": "cubingapp"
           }
         ]
@@ -1886,10 +1586,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U M",
-              "note": ""
-            },
+            "alg": "M' U M",
             "source": "cubingapp"
           }
         ]
@@ -1899,10 +1596,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M U M'",
-              "note": ""
-            },
+            "alg": "M U M'",
             "source": "cubingapp"
           }
         ]
@@ -1912,10 +1606,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M2 U' M' U' M'",
-              "note": ""
-            },
+            "alg": "M2 U' M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -1925,17 +1616,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M U' M' U' M U' M'",
-              "note": ""
-            },
+            "alg": "M U' M' U' M U' M'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "M U M' U M U M'",
-              "note": ""
-            },
+            "alg": "M U M' U M U M'",
             "source": "cubingapp"
           }
         ]
@@ -1945,17 +1630,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M U' M' U' M'",
-              "note": ""
-            },
+            "alg": "M' U' M U' M' U' M'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "M' U M U M' U M",
-              "note": ""
-            },
+            "alg": "M' U M U M' U M",
             "source": "cubingapp"
           }
         ]
@@ -1965,10 +1644,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M' U2 M' U' M'",
-              "note": ""
-            },
+            "alg": "M' U' M' U2 M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -1978,10 +1654,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U2 M' U2 M U' M'",
-              "note": ""
-            },
+            "alg": "M' U2 M' U2 M U' M'",
             "source": "cubingapp"
           }
         ]
@@ -1991,10 +1664,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M U M' U' M'",
-              "note": ""
-            },
+            "alg": "M' U' M U M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2004,10 +1674,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M' U M U' M'",
-              "note": ""
-            },
+            "alg": "M' U' M' U M U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2017,17 +1684,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U2 M' U2 M' U' M'",
-              "note": ""
-            },
+            "alg": "M' U2 M' U2 M' U' M'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "M' U2 M' U2 M' U M'",
-              "note": ""
-            },
+            "alg": "M' U2 M' U2 M' U M'",
             "source": "cubingapp"
           }
         ]
@@ -2037,10 +1698,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M' U2 M' U' M U' M' U' M'",
-              "note": ""
-            },
+            "alg": "M' U' M' U2 M' U' M U' M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2052,10 +1710,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M",
-              "note": ""
-            },
+            "alg": "M",
             "source": "cubingapp"
           }
         ]
@@ -2065,10 +1720,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U M",
-              "note": ""
-            },
+            "alg": "M' U M",
             "source": "cubingapp"
           }
         ]
@@ -2078,10 +1730,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U M' U2 M U M",
-              "note": ""
-            },
+            "alg": "U M' U2 M U M",
             "source": "cubingapp"
           }
         ]
@@ -2091,10 +1740,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' M U' M' U' M",
-              "note": ""
-            },
+            "alg": "U' M U' M' U' M",
             "source": "cubingapp"
           }
         ]
@@ -2104,10 +1750,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U M' U M U M",
-              "note": ""
-            },
+            "alg": "M' U M' U M U M",
             "source": "cubingapp"
           }
         ]
@@ -2117,17 +1760,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M U M' U M U M'",
-              "note": ""
-            },
+            "alg": "M U M' U M U M'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U' M' U M' U2 M U M",
-              "note": ""
-            },
+            "alg": "U' M' U M' U2 M U M",
             "source": "cubingapp"
           }
         ]
@@ -2137,10 +1774,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M U' M' U2 M' U2 M' U M",
-              "note": ""
-            },
+            "alg": "M U' M' U2 M' U2 M' U M",
             "source": "cubingapp"
           }
         ]
@@ -2150,10 +1784,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M U' M' U' M'",
-              "note": ""
-            },
+            "alg": "M U' M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2163,10 +1794,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' M' U M' U2 M U M'",
-              "note": ""
-            },
+            "alg": "U' M' U M' U2 M U M'",
             "source": "cubingapp"
           }
         ]
@@ -2176,10 +1804,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M' U' M'",
-              "note": ""
-            },
+            "alg": "M' U' M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2189,10 +1814,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M U M' U M U M",
-              "note": ""
-            },
+            "alg": "M U M' U M U M",
             "source": "cubingapp"
           }
         ]
@@ -2202,10 +1824,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U M' U2 M U M U M' U M'",
-              "note": ""
-            },
+            "alg": "U M' U2 M U M U M' U M'",
             "source": "cubingapp"
           }
         ]
@@ -2215,10 +1834,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' M' U M' U2 M'",
-              "note": ""
-            },
+            "alg": "U' M' U M' U2 M'",
             "source": "cubingapp"
           }
         ]
@@ -2228,10 +1844,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M' U2 M' U2 M' U M",
-              "note": ""
-            },
+            "alg": "M' U' M' U2 M' U2 M' U M",
             "source": "cubingapp"
           }
         ]
@@ -2241,10 +1854,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U M' U2 M U M U M",
-              "note": ""
-            },
+            "alg": "U M' U2 M U M U M",
             "source": "cubingapp"
           }
         ]
@@ -2254,10 +1864,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M U2 M U2 M' U M'",
-              "note": ""
-            },
+            "alg": "M' U' M U2 M U2 M' U M'",
             "source": "cubingapp"
           }
         ]
@@ -2267,10 +1874,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U M' U' M' U' M' U' M",
-              "note": ""
-            },
+            "alg": "U M' U' M' U' M' U' M",
             "source": "cubingapp"
           }
         ]
@@ -2280,10 +1884,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' M2 U M'",
-              "note": ""
-            },
+            "alg": "U' M2 U M'",
             "source": "cubingapp"
           }
         ]
@@ -2293,10 +1894,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' M2 U M U M",
-              "note": ""
-            },
+            "alg": "U' M2 U M U M",
             "source": "cubingapp"
           }
         ]
@@ -2306,10 +1904,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U2 M' U2 M' U M'",
-              "note": ""
-            },
+            "alg": "U2 M' U2 M' U M'",
             "source": "cubingapp"
           }
         ]
@@ -2319,10 +1914,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U M' U' M' U' M' U' M'",
-              "note": ""
-            },
+            "alg": "U M' U' M' U' M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2332,10 +1924,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U M' U' M' U2 M",
-              "note": ""
-            },
+            "alg": "U M' U' M' U2 M",
             "source": "cubingapp"
           }
         ]
@@ -2345,10 +1934,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U2 M' U' M' U' M U' M",
-              "note": ""
-            },
+            "alg": "M' U2 M' U' M' U' M U' M",
             "source": "cubingapp"
           }
         ]
@@ -2358,10 +1944,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U M U M' U2 M U' M",
-              "note": ""
-            },
+            "alg": "M' U M U M' U2 M U' M",
             "source": "cubingapp"
           }
         ]
@@ -2371,10 +1954,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U M' U' M' U M U' M' U' M",
-              "note": ""
-            },
+            "alg": "U M' U' M' U M U' M' U' M",
             "source": "cubingapp"
           }
         ]
@@ -2384,10 +1964,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U2 M U M' U2 M U' M'",
-              "note": ""
-            },
+            "alg": "U2 M U M' U2 M U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2397,10 +1974,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U M' U2 M' U M",
-              "note": ""
-            },
+            "alg": "M' U M' U2 M' U M",
             "source": "cubingapp"
           }
         ]
@@ -2410,10 +1984,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U M' U2 M' U' M'",
-              "note": ""
-            },
+            "alg": "M' U M' U2 M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2423,10 +1994,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U2 M' U2 M U M",
-              "note": ""
-            },
+            "alg": "M' U2 M' U2 M U M",
             "source": "cubingapp"
           }
         ]
@@ -2436,10 +2004,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M2 U' M' U2 M' U2 M",
-              "note": ""
-            },
+            "alg": "M2 U' M' U2 M' U2 M",
             "source": "cubingapp"
           }
         ]
@@ -2449,10 +2014,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M2 U' M' U2 M' U2 M' U M'",
-              "note": ""
-            },
+            "alg": "M2 U' M' U2 M' U2 M' U M'",
             "source": "cubingapp"
           }
         ]
@@ -2462,10 +2024,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U2 M' U2 M'",
-              "note": ""
-            },
+            "alg": "M' U2 M' U2 M'",
             "source": "cubingapp"
           }
         ]
@@ -2475,10 +2034,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U2 M U M U2 M' U' M'",
-              "note": ""
-            },
+            "alg": "M' U2 M U M U2 M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2488,10 +2044,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U2 M' U2 M U' M U' M' U2 M",
-              "note": ""
-            },
+            "alg": "M' U2 M' U2 M U' M U' M' U2 M",
             "source": "cubingapp"
           }
         ]
@@ -2501,10 +2054,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M U M' U M'",
-              "note": ""
-            },
+            "alg": "M' U' M U M' U M'",
             "source": "cubingapp"
           }
         ]
@@ -2514,10 +2064,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M U M' U' M'",
-              "note": ""
-            },
+            "alg": "M' U' M U M' U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2527,10 +2074,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M U M' U' M U' M'",
-              "note": ""
-            },
+            "alg": "M U M' U' M U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2540,10 +2084,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U M U' M",
-              "note": ""
-            },
+            "alg": "M' U M U' M",
             "source": "cubingapp"
           }
         ]
@@ -2553,10 +2094,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M' U' M' U2 M U' M'",
-              "note": ""
-            },
+            "alg": "M' U' M' U' M' U2 M U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2566,17 +2104,11 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "R U R' U' M' U R U' r'",
-              "note": ""
-            },
+            "alg": "R U R' U' M' U R U' r'",
             "source": "cubingapp"
           },
           {
-            "alg": {
-              "algorithm": "U S R' F R S' R' F' R",
-              "note": ""
-            },
+            "alg": "U S R' F R S' R' F' R",
             "source": "cubingapp"
           }
         ]
@@ -2586,10 +2118,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M' U M'",
-              "note": ""
-            },
+            "alg": "M' U' M' U M'",
             "source": "cubingapp"
           }
         ]
@@ -2599,10 +2128,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M U' M U2 M' U' M",
-              "note": ""
-            },
+            "alg": "M' U' M U' M U2 M' U' M",
             "source": "cubingapp"
           }
         ]
@@ -2612,10 +2138,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U M' U' M' U M U M",
-              "note": ""
-            },
+            "alg": "U M' U' M' U M U M",
             "source": "cubingapp"
           }
         ]
@@ -2625,10 +2148,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M' U M U' M'",
-              "note": ""
-            },
+            "alg": "M' U' M' U M U' M'",
             "source": "cubingapp"
           }
         ]
@@ -2638,10 +2158,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "U' M U M' U' M U' M' U2 M",
-              "note": ""
-            },
+            "alg": "U' M U M' U' M U' M' U2 M",
             "source": "cubingapp"
           }
         ]
@@ -2651,10 +2168,7 @@
         "subgroup": "",
         "algorithms": [
           {
-            "alg": {
-              "algorithm": "M' U' M' U' M U' M' U2 M' U' M",
-              "note": ""
-            },
+            "alg": "M' U' M' U' M U' M' U2 M' U' M",
             "source": "cubingapp"
           }
         ]
