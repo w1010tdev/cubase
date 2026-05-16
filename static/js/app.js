@@ -67,6 +67,7 @@ const App = {
     handleRoute() {
         let hash = window.location.hash || '#explore';
         this.currentView = hash;
+        window.__CUBASE_PROGRESS__ = this.progress;
         
         // Update active nav link
         document.querySelectorAll('.nav-link').forEach(l => {

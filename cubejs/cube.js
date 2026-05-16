@@ -24,8 +24,8 @@ export class Cubie {
         if (y === -offset) this.colors.D = 'white';
         if (z === offset) this.colors.F = 'red';
         if (z === -offset) this.colors.B = 'orange';
-        if (x === offset) this.colors.R = 'blue';
-        if (x === -offset) this.colors.L = 'green';
+        if (x === offset) this.colors.R = 'green';
+        if (x === -offset) this.colors.L = 'blue';
     }
 
     rotate(axis, amount) {

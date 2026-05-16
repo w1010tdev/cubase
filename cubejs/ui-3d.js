@@ -280,11 +280,29 @@ export class Cube3DUI {
 
         const onUp = () => { isDragging = false; };
 
-        document.addEventListener('mousedown', onDown);
-        document.addEventListener('mousemove', onMove);
-        document.addEventListener('mouseup', onUp);
-        document.addEventListener('touchstart', onDown);
-        document.addEventListener('touchmove', onMove);
-        document.addEventListener('touchend', onUp);
+        this.boundOnDown = onDown;
+        this.boundOnMove = onMove;
+        this.boundOnUp = onUp;
+
+        document.addEventListener('mousedown', this.boundOnDown);
+        document.addEventListener('mousemove', this.boundOnMove);
+        document.addEventListener('mouseup', this.boundOnUp);
+        document.addEventListener('touchstart', this.boundOnDown);
+        document.addEventListener('touchmove', this.boundOnMove);
+        document.addEventListener('touchend', this.boundOnUp);
+    }
+
+    destroy() {
+        if (this.resizeObserver) {
+            this.resizeObserver.disconnect();
+        }
+        if (this.boundOnDown) {
+            document.removeEventListener('mousedown', this.boundOnDown);
+            document.removeEventListener('mousemove', this.boundOnMove);
+            document.removeEventListener('mouseup', this.boundOnUp);
+            document.removeEventListener('touchstart', this.boundOnDown);
+            document.removeEventListener('touchmove', this.boundOnMove);
+            document.removeEventListener('touchend', this.boundOnUp);
+        }
     }
 }
