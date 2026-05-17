@@ -121,41 +121,42 @@ async function handlePlayButton() {
         return;
     }
 
-    // IDLE with alg text → apply + play
-    if (alg) {
-        input.value = '';
-        await applyNewAlgAndPlay(alg);
-        return;
-    }
-
-    // IDLE without alg text → play / replay current moves
-    if (state.moves.length === 0) return;
-
-    if (state.currentIdx >= state.moves.length) {
-        if (state.baseScramble) {
-            replayBaseState();
-        } else {
-            // Normal mode: loop back without resetting cube
-            // (useful for testing formula cycles)
-            state.currentIdx = 0;
+    // If input changed, update state.algString
+    if (alg !== state.algString && alg) {
+        await applyNewAlgAndPlay(alg, true);
+    } else {
+        if (state.moves.length === 0) return;
+        if (state.currentIdx >= state.moves.length) {
+            if (state.baseScramble) {
+                replayBaseState();
+            } else {
+                state.currentIdx = 0;
+            }
         }
+        await startPlayback();
     }
-    await startPlayback();
 }
 
-async function applyNewAlgAndPlay(alg) {
+async function applyNewAlgAndPlay(alg, resetCube = true) {
     if (!alg.trim()) return;
     stopPlayback();
-    state.baseScramble = null;
-    hideScrambleInfo();
+    
     state.algString = alg;
     rebuildMoves();
     state.currentIdx = 0;
-    state.importInfo = null;
-    hideImportInfo();
 
-    state.ui.cube.reset();
-    state.ui.updateDOMTransforms();
+    if (resetCube) {
+        if (state.baseScramble) {
+            replayBaseState();
+        } else {
+            state.ui.cube.reset();
+            state.ui.updateDOMTransforms();
+        }
+    } else {
+        state.baseScramble = null;
+        hideScrambleInfo();
+    }
+
     updateUI();
 
     await startPlayback();
@@ -200,26 +201,12 @@ async function startPlayback() {
 /* ---- Scramble ---- */
 async function doScramble() {
     stopPlayback();
-    state.baseScramble = null;
-    hideScrambleInfo();
-    state.algString = '';
     const scramble = generateScramble(state.size);
-    const tokens = buildMoveList(scramble).filter(m => m !== '(' && m !== ')');
-    state.moves = tokens;
-    state.currentIdx = 0;
-    state.importInfo = null;
-    hideImportInfo();
-
     const input = document.getElementById('pg-alg-input');
-    if (input) input.value = tokens.join(' ');
+    if (input) input.value = scramble;
 
-    state.ui.cube.reset();
-    state.ui.updateDOMTransforms();
-    updateUI();
-
-    if (tokens.length > 0) {
-        await startPlayback();
-    }
+    // Play scramble from current state
+    await applyNewAlgAndPlay(scramble, false);
 }
 
 /* ---- Step Forward / Back ---- */
@@ -380,9 +367,9 @@ function checkImport() {
             state.ui.updateDOMTransforms();
         }
 
-        // Keep input empty so Play button doesn't re-apply the alg
+        // Put formula in input so it tracks progress
         const input = document.getElementById('pg-alg-input');
-        if (input) input.value = '';
+        if (input) input.value = alg;
 
         // Import banner
         const banner = document.getElementById('pg-import-info');
