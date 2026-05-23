@@ -69,11 +69,13 @@ const App = {
 
     async fetchData() {
         try {
-            const dbRes = await fetch('/api/explore');
+            // 先只拉取树状结构
+            const dbRes = await fetch('/api/explore/tree');
             this.data = await dbRes.json();
             
             const progRes = await fetch('/api/progress/all');
             this.progress = await progRes.json();
+            window.__CUBASE_PROGRESS__ = this.progress; // expose for global 3d modal
         } catch (e) {
             console.error("Failed to load data", e);
         }

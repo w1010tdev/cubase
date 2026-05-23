@@ -44,7 +44,31 @@ def index():
 def serve_cubejs(filename):
     return send_from_directory(os.path.join(BASE_DIR, 'cubejs'), filename)
 
-# API: Get all explore data
+# API: Get explore tree structure (Puzzle -> Category -> case counts)
+@app.route('/api/explore/tree', methods=['GET'])
+def get_explore_tree():
+    tree = {}
+    for puzzle, categories in mem_db.items():
+        tree[puzzle] = {}
+        for category, cases in categories.items():
+            # Return just the count of cases for rendering the menu and category grid
+            tree[puzzle][category] = len(cases)
+    return jsonify(tree)
+
+# API: Get full details for a specific category
+@app.route('/api/explore/category', methods=['GET'])
+def get_explore_category():
+    puzzle = request.args.get('puzzle')
+    category = request.args.get('category')
+    
+    if not puzzle or not category:
+        return jsonify({"error": "Missing puzzle or category"}), 400
+        
+    if puzzle in mem_db and category in mem_db[puzzle]:
+        return jsonify(mem_db[puzzle][category])
+    return jsonify([]), 404
+
+# API: Get all explore data (Legacy, keeping for fallback)
 @app.route('/api/explore', methods=['GET'])
 def get_explore_data():
     return jsonify(mem_db)

@@ -9,7 +9,8 @@ const exploreState = {
     searchQuery: '',
     expandedPuzzles: new Set(),
     restoreSearchFocus: false,
-    showArrows: true
+    showArrows: true,
+    categoryCache: {} // Cache for full category data
 };
 
 /* ---- Global 3D Modal Singleton ---- */
@@ -291,14 +292,14 @@ export function initExplore(container, db, progress) {
     renderExploreContent(container, db, progress);
 }
 
-export function onTreeCategorySelect(container, db, progress, puzzle, category) {
+export async function onTreeCategorySelect(container, db, progress, puzzle, category) {
     exploreState.puzzle = puzzle;
     exploreState.category = category;
     exploreState.level = 'cases';
     exploreState.searchQuery = '';
     exploreState.expandedPuzzles.add(puzzle);
     renderTreeMenu(db);
-    renderExploreContent(container, db, progress);
+    await renderExploreContent(container, db, progress);
 }
 
 function ensureDefaultState(db) {
@@ -425,7 +426,7 @@ function renderTreeMenu(db) {
     });
 
     tree.querySelectorAll('[data-category]').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', async () => {
             exploreState.puzzle = btn.dataset.puzzle;
             exploreState.category = btn.dataset.category;
             exploreState.level = 'cases';
@@ -434,13 +435,13 @@ function renderTreeMenu(db) {
             renderTreeMenu(db);
             const appView = document.getElementById('app-view');
             if (appView) {
-                renderExploreContent(appView, db, window.__CUBASE_PROGRESS__ || {});
+                await renderExploreContent(appView, db, window.__CUBASE_PROGRESS__ || {});
             }
         });
     });
 }
 
-function renderExploreContent(container, db, progress) {
+async function renderExploreContent(container, db, progress) {
     const content = container.querySelector('#explore-content');
     if (!content) return;
 
@@ -497,19 +498,21 @@ function renderExploreContent(container, db, progress) {
 
         const categoryGrid = content.querySelector('#category-grid');
         categories.forEach(c => {
-            const size = ((db[exploreState.puzzle] || {})[c] || []).length;
+            const size = typeof (db[exploreState.puzzle] || {})[c] === 'number' 
+                ? (db[exploreState.puzzle] || {})[c] 
+                : ((db[exploreState.puzzle] || {})[c] || []).length;
             const item = document.createElement('button');
             item.className = 'text-left p-4 border border-light-border dark:border-dark-border bg-light-surface dark:bg-dark-surface hover:bg-light-hover dark:hover:bg-dark-hover';
             item.innerHTML = `
                 <div class="text-lg font-bold">${c}</div>
                 <div class="text-sm text-light-muted dark:text-dark-muted">${size} cases</div>
             `;
-            item.addEventListener('click', () => {
+            item.addEventListener('click', async () => {
                 exploreState.category = c;
                 exploreState.level = 'cases';
                 exploreState.searchQuery = '';
                 renderTreeMenu(db);
-                renderExploreContent(container, db, progress);
+                await renderExploreContent(container, db, progress);
             });
             categoryGrid.appendChild(item);
         });
@@ -533,7 +536,24 @@ function renderExploreContent(container, db, progress) {
         return;
     }
 
-    const allCases = (db[exploreState.puzzle] && db[exploreState.puzzle][exploreState.category]) || [];
+    // Lazy load the full category data
+    const cacheKey = `${exploreState.puzzle}|${exploreState.category}`;
+    if (!exploreState.categoryCache[cacheKey]) {
+        content.innerHTML = '<div class="flex justify-center p-8"><i class="fa-solid fa-spinner fa-spin text-3xl text-blue-500"></i></div>';
+        try {
+            const res = await fetch(`/api/explore/category?puzzle=${encodeURIComponent(exploreState.puzzle)}&category=${encodeURIComponent(exploreState.category)}`);
+            if (res.ok) {
+                exploreState.categoryCache[cacheKey] = await res.json();
+            } else {
+                exploreState.categoryCache[cacheKey] = [];
+            }
+        } catch (e) {
+            console.error('Failed to fetch category data', e);
+            exploreState.categoryCache[cacheKey] = [];
+        }
+    }
+
+    const allCases = exploreState.categoryCache[cacheKey] || [];
     const cases = filterCasesByQuery(allCases, exploreState.searchQuery);
     content.innerHTML = `
         <div class="mb-4 flex items-center justify-between">
@@ -563,15 +583,45 @@ function renderExploreContent(container, db, progress) {
     `;
 
     const grid = content.querySelector('#explore-grid');
-    cases.forEach(caseData => {
+    
+    // Set up Intersection Observer for lazy rendering of 2D cubes
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const card = entry.target;
+                if (card.dataset.rendered !== 'true') {
+                    const caseIdx = parseInt(card.dataset.idx);
+                    const caseData = cases[caseIdx];
+                    const mainAlg = card.dataset.mainAlg;
+                    
+                    render2D(card, caseData, exploreState.puzzle, mainAlg, exploreState.showArrows);
+                    card.dataset.rendered = 'true';
+                }
+                observer.unobserve(card); // Stop observing once rendered
+            }
+        });
+    }, { rootMargin: '200px' });
+
+    cases.forEach((caseData, idx) => {
         const key = `${exploreState.puzzle}|${caseData.name}`;
         const userProg = progress[key] || {};
-        const mainAlg = userProg.main_alg || caseData.algorithms[0].alg;
+        // Add safety check for algorithms array
+        const defaultAlg = (caseData.algorithms && caseData.algorithms.length > 0) ? caseData.algorithms[0].alg : '';
+        const mainAlg = userProg.main_alg || defaultAlg;
+        
         const card = createCaseCard(exploreState.puzzle, exploreState.category, caseData, mainAlg);
+        
+        // Add metadata for lazy rendering
+        card.dataset.idx = idx;
+        card.dataset.mainAlg = mainAlg;
+        card.dataset.rendered = 'false';
+        
         grid.appendChild(card);
-        render2D(card, caseData, exploreState.puzzle, mainAlg, exploreState.showArrows);
+        observer.observe(card);
     });
 
+    // Debounced search
+    let searchTimeout;
     const searchInput = content.querySelector('#explore-search');
     if (searchInput) {
         if (exploreState.restoreSearchFocus) {
@@ -581,9 +631,12 @@ function renderExploreContent(container, db, progress) {
             exploreState.restoreSearchFocus = false;
         }
         searchInput.addEventListener('input', (e) => {
-            exploreState.searchQuery = e.target.value || '';
-            exploreState.restoreSearchFocus = true;
-            renderExploreContent(container, db, progress);
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                exploreState.searchQuery = e.target.value || '';
+                exploreState.restoreSearchFocus = true;
+                renderExploreContent(container, db, progress);
+            }, 300);
         });
     }
 
@@ -597,11 +650,11 @@ function renderExploreContent(container, db, progress) {
 
     const backToCategories = content.querySelector('#back-to-categories');
     if (backToCategories) {
-        backToCategories.addEventListener('click', () => {
+        backToCategories.addEventListener('click', async () => {
             exploreState.level = 'categories';
             exploreState.category = null;
             renderTreeMenu(db);
-            renderExploreContent(container, db, progress);
+            await renderExploreContent(container, db, progress);
         });
     }
 }
@@ -623,7 +676,7 @@ function createCaseCard(cat, sub, caseData, mainAlg) {
                     <p class="text-xs text-light-muted dark:text-dark-muted mt-1">Scramble: <code class="bg-light-hover dark:bg-dark-hover px-1 scramble-text" data-alg="${mainAlg}">Calculating...</code></p>
                     
                     <div class="mt-3 space-y-2">
-                        ${caseData.algorithms.map((a, idx) => `
+                        ${(caseData.algorithms || []).map((a, idx) => `
                             <div data-alg-row="${idx}" data-alg="${a.alg}" class="text-sm p-2 bg-light-hover dark:bg-dark-hover border ${a.alg === mainAlg ? 'border-2 border-yellow-400 dark:border-yellow-500' : 'border border-transparent hover:border-black dark:hover:border-dark-border'} transition cursor-pointer flex justify-between items-center group">
                                 <span class="font-mono text-xs break-all mr-2">${a.alg}</span>
                                 <div class="flex space-x-1 opacity-0 group-hover:opacity-100 transition">
@@ -655,6 +708,13 @@ function render2D(card, caseData, puzzleKey, mainAlg, showArrows) {
     const containerId = `cube2d-${caseData.name.replace(/\s+/g, '-')}`;
     const cubeSize = getCubeSizeFromPuzzle(puzzleKey);
     
+    // Safety check for empty algorithm
+    if (!mainAlg) {
+        const code = card.querySelector('.scramble-text');
+        if (code) code.textContent = 'No algorithm available';
+        return;
+    }
+
     // Expand first so invertSeq handles parens as separate tokens
     const expanded = expandAlg(mainAlg);
     const scramble = invertSeq(expanded);
